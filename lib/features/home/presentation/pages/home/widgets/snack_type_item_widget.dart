@@ -11,22 +11,13 @@ class SnackTypeItemWidget extends StatelessWidget {
   final Function()? onTap;
   final bool? hasIcon;
 
-  const SnackTypeItemWidget(
-      {Key? key,
-      this.isSelected = false,
-      this.text,
-      this.assetPath,
-      this.onTap,
-      this.hasIcon = true})
-      : super(key: key);
-
   const SnackTypeItemWidget({
     Key? key,
     this.isSelected = false,
     this.text,
-    required this.onTap,
     this.assetPath,
-    this.hasIcon,
+    this.onTap,
+    this.hasIcon = true,
   }) : super(key: key);
 
   @override

@@ -8,8 +8,8 @@ import 'package:qclay_test/core/widgets/back_button/back_button.dart';
 import 'package:qclay_test/core/widgets/lines/bottom_sheet_line_widget.dart';
 import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:qclay_test/features/home/presentation/pages/home/models/snack_item_model.dart';
+import 'package:qclay_test/features/home/presentation/pages/home/widgets/home_cart_item_widget.dart';
 import 'package:qclay_test/injector_container.dart';
-import 'widgets/cart_item_widget.dart';
 import 'widgets/snack_card_item.dart';
 import 'widgets/snack_type_item_widget.dart';
 
@@ -173,7 +173,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 },
                                 text: "Sweets",
                                 isSelected: state.selectedSnackTypeItem ==
-                                    SnackTypes.sweets, snackType: null,
+                                    SnackTypes.sweets,
                               ),
                             ],
                           ),
