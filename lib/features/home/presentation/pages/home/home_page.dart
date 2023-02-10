@@ -37,14 +37,20 @@ class HomePageBody extends StatefulWidget {
 class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
   @override
   void initState() {
-    _initState(context);
     super.initState();
+    if (!mounted) return;
+    _initState(context);
+    WidgetsBinding.instance.addPersistentFrameCallback((timeStamp) {
+      final size = MediaQuery.of(context).size;
+      _bloc.add(SetSizeEvent(size: size));
+    });
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (!mounted) return;
+    // _initLists();
     // initData(context);
   }
 
@@ -57,7 +63,6 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-
     return BlocConsumer<HomeBloc, HomeState>(
       listener: (_, state) {},
       builder: (_, state) {
@@ -152,9 +157,18 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                     SliverPadding(
                       padding: AppUtils.kPaddingHor30Top32,
                       sliver: SliverToBoxAdapter(
-                        child: SnackCardItem(
-                          snack: _snack[state.selectedSnackTypeItem.index],
-                        ),
+                        child: Stack(
+                            children: state
+                                .snacksList[state.selectedSnackTypeItem.index]
+                                .map(
+                                  (snack) => SnackCardItem(
+                                    bloc: _bloc,
+                                    state: state,
+                                    snack: snack,
+                                    isFont: state.snacksList[state.selectedSnackTypeItem.index].last == snack,
+                                  ),
+                                )
+                                .toList()),
                       ),
                     )
                   ],

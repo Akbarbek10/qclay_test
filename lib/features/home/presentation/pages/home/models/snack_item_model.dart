@@ -9,11 +9,11 @@ class SnackItemModel {
   final Color? backgroundColor;
 
   SnackItemModel({
-    this.cartImgUrl,
-    this.type,
-    this.imageUrl,
-    this.price,
-    this.name,
+    this.cartImgUrl='',
+    this.type='',
+    this.imageUrl='',
+    this.price='',
+    this.name='',
     this.backgroundColor,
   });
 }
