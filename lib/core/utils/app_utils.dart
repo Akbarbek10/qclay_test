@@ -63,9 +63,12 @@ class AppUtils {
   static const kPaddingAll8 = EdgeInsets.all(8);
   static const kPaddingAll10 = EdgeInsets.all(10);
   static const kPaddingAll12 = EdgeInsets.all(12);
+  static const kPaddingVer8Hor16 = EdgeInsets.symmetric(vertical: 8,horizontal: 16);
+  static const kPaddingHor21Ver18 = EdgeInsets.symmetric(horizontal: 21,vertical: 18);
   static const kPaddingLeft44Top25Right55 =
       EdgeInsets.only(left: 44, top: 25, right: 55);
   static const kPaddingLeft44Right38 = EdgeInsets.only(left: 44, right: 38);
+  static const kPaddingLeft33Top44 = EdgeInsets.only(top: 44, left: 33);
   static const kPaddingLeft38Right19Top25 =
       EdgeInsets.only(left: 38, right: 19, top: 25);
 
@@ -87,4 +90,5 @@ class AppUtils {
   static const kBorderRadius12 = BorderRadius.all(Radius.circular(12));
   static const kBorderRadius24 = BorderRadius.all(Radius.circular(24));
   static const kBorderRadius32 = BorderRadius.all(Radius.circular(32));
+  static const kBorderRadius30 = BorderRadius.all(Radius.circular(30));
 }

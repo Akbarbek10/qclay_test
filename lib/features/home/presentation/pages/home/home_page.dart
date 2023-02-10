@@ -115,8 +115,8 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                           SnackTypeItemWidget(
                             snackType: SnackTypes.sweets,
                             text: "Sweets",
-                            isSelected:
-                                state.selectedSnackTypeItem == SnackTypes.sweets,
+                            isSelected: state.selectedSnackTypeItem ==
+                                SnackTypes.sweets,
                           ),
                         ],
                       ),
