@@ -87,7 +87,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       _resetPosition(emit);
     });
 
-
     debugPrint("${state.currentSnacksList.length}");
   }
 

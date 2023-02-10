@@ -17,6 +17,19 @@ class ThemeTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static final black25Weight400 = TextStyle(
+    color: ThemeColors.black,
+    fontSize: 25.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  static final black25Weight700 = TextStyle(
+    color: ThemeColors.black,
+    fontSize: 25.sp,
+    fontWeight: FontWeight.w700,
+  );
+
+
   static final blackSemiBold14 = TextStyle(
     color: ThemeColors.black,
     fontSize: 14.sp,
@@ -32,6 +45,18 @@ class ThemeTextStyles {
   static final blackExtraBold14 = TextStyle(
     color: ThemeColors.black,
     fontSize: 14.sp,
+    fontWeight: FontWeight.w700,
+  );
+
+  static final black30Weight400 = TextStyle(
+    color: ThemeColors.black,
+    fontSize: 30.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  static final black30Weight700 = TextStyle(
+    color: ThemeColors.black,
+    fontSize: 30.sp,
     fontWeight: FontWeight.w700,
   );
 
