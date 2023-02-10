@@ -81,9 +81,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     list.removeLast();
     debugPrint("${list.length}");
-    emit(state.copyWith(currentSnacksList: list));
+    await Future.delayed(const Duration(milliseconds: 300)).then((value) {
+      emit(state.copyWith(currentSnacksList: list));
 
-    _resetPosition(emit);
+      _resetPosition(emit);
+    });
+
 
     debugPrint("${state.currentSnacksList.length}");
   }
