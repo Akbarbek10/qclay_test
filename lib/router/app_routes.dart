@@ -11,32 +11,27 @@ final rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
   navigatorKey: rootNavigatorKey,
-  initialLocation: Routes.product,
+  initialLocation: Routes.snackCollection,
   routes: [
     GoRoute(
       name: Routes.home,
       path: Routes.home,
       builder: (_, __) => const HomePage(),
     ),
-
     GoRoute(
       name: Routes.product,
       path: Routes.product,
       builder: (_, __) => const ProductPage(),
     ),
-
     GoRoute(
       name: Routes.cart,
       path: Routes.cart,
       builder: (_, __) => const CartPage(),
     ),
-
-
     GoRoute(
       name: Routes.snackCollection,
       path: Routes.snackCollection,
       builder: (_, __) => const SnackCollectionsPage(),
     ),
-
   ],
 );

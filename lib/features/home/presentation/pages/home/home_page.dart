@@ -108,15 +108,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 hasIcon: false,
                                 onTap: () {
                                   context.read<HomeBloc>().add(
-                                    const SnackTypeSelectedEvent(
-                                      snackType: SnackTypes.all,
-                                    ),
-                                  );
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.all,
+                                        ),
+                                      );
                                   context.read<HomeBloc>().add(
-                                    SetSnacksListEvent(
-                                      currentSnacksList: _allList,
-                                    ),
-                                  );
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _allList,
+                                        ),
+                                      );
                                 },
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.all,
@@ -125,15 +125,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 assetPath: "assets/svg/ic_choco.svg",
                                 onTap: () {
                                   context.read<HomeBloc>().add(
-                                    const SnackTypeSelectedEvent(
-                                      snackType: SnackTypes.choco,
-                                    ),
-                                  );
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.choco,
+                                        ),
+                                      );
                                   context.read<HomeBloc>().add(
-                                    SetSnacksListEvent(
-                                      currentSnacksList: _chocoList,
-                                    ),
-                                  );
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _chocoList,
+                                        ),
+                                      );
                                 },
                                 text: "Choco",
                                 isSelected: state.selectedSnackTypeItem ==
@@ -143,15 +143,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 assetPath: "assets/svg/ic_chips.svg",
                                 onTap: () {
                                   context.read<HomeBloc>().add(
-                                    const SnackTypeSelectedEvent(
-                                      snackType: SnackTypes.chips,
-                                    ),
-                                  );
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.chips,
+                                        ),
+                                      );
                                   context.read<HomeBloc>().add(
-                                    SetSnacksListEvent(
-                                      currentSnacksList: _chipsList,
-                                    ),
-                                  );
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _chipsList,
+                                        ),
+                                      );
                                 },
                                 text: "Chips",
                                 isSelected: state.selectedSnackTypeItem ==
@@ -161,15 +161,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 assetPath: "assets/svg/ic_candy.svg",
                                 onTap: () {
                                   context.read<HomeBloc>().add(
-                                    const SnackTypeSelectedEvent(
-                                      snackType: SnackTypes.sweets,
-                                    ),
-                                  );
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.sweets,
+                                        ),
+                                      );
                                   context.read<HomeBloc>().add(
-                                    SetSnacksListEvent(
-                                      currentSnacksList: _sweetsList,
-                                    ),
-                                  );
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _sweetsList,
+                                        ),
+                                      );
                                 },
                                 text: "Sweets",
                                 isSelected: state.selectedSnackTypeItem ==
@@ -209,16 +209,16 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                         child: Stack(
                             children: state.currentSnacksList.isNotEmpty
                                 ? state.currentSnacksList
-                                .map(
-                                  (snack) => SnackCardItem(
-                                bloc: _bloc,
-                                state: state,
-                                snack: snack,
-                                isFont: state.currentSnacksList.last ==
-                                    snack,
-                              ),
-                            )
-                                .toList()
+                                    .map(
+                                      (snack) => SnackCardItem(
+                                        bloc: _bloc,
+                                        state: state,
+                                        snack: snack,
+                                        isFont: state.currentSnacksList.last ==
+                                            snack,
+                                      ),
+                                    )
+                                    .toList()
                                 : []),
                       ),
                     )
