@@ -80,7 +80,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                     SliverSafeArea(
                       bottom: false,
                       sliver: SliverPadding(
-                        padding: AppUtils.kPaddingLeft44Right38,
+                        padding: EdgeInsets.only(left: 44.w, right: 38.w),
                         sliver: SliverToBoxAdapter(
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,7 +109,8 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                       ),
                     ),
                     SliverPadding(
-                      padding: AppUtils.kPaddingLeft38Right19Top25,
+                      padding:
+                          EdgeInsets.only(left: 38.w, right: 19.w, top: 25.h),
                       sliver: SliverToBoxAdapter(
                         child: SizedBox(
                           child: Row(
@@ -119,15 +120,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 hasIcon: false,
                                 onTap: () {
                                   _bloc.add(
-                                        const SnackTypeSelectedEvent(
-                                          snackType: SnackTypes.all,
-                                        ),
-                                      );
+                                    const SnackTypeSelectedEvent(
+                                      snackType: SnackTypes.all,
+                                    ),
+                                  );
                                   _bloc.add(
-                                        SetSnacksListEvent(
-                                          currentSnacksList: _allList,
-                                        ),
-                                      );
+                                    SetSnacksListEvent(
+                                      currentSnacksList: _allList,
+                                    ),
+                                  );
                                 },
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.all,
@@ -136,15 +137,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 assetPath: "assets/svg/ic_choco.svg",
                                 onTap: () {
                                   _bloc.add(
-                                        const SnackTypeSelectedEvent(
-                                          snackType: SnackTypes.choco,
-                                        ),
-                                      );
+                                    const SnackTypeSelectedEvent(
+                                      snackType: SnackTypes.choco,
+                                    ),
+                                  );
                                   _bloc.add(
-                                        SetSnacksListEvent(
-                                          currentSnacksList: _chocoList,
-                                        ),
-                                      );
+                                    SetSnacksListEvent(
+                                      currentSnacksList: _chocoList,
+                                    ),
+                                  );
                                 },
                                 text: "Choco",
                                 isSelected: state.selectedSnackTypeItem ==
@@ -154,15 +155,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 assetPath: "assets/svg/ic_chips.svg",
                                 onTap: () {
                                   _bloc.add(
-                                        const SnackTypeSelectedEvent(
-                                          snackType: SnackTypes.chips,
-                                        ),
-                                      );
+                                    const SnackTypeSelectedEvent(
+                                      snackType: SnackTypes.chips,
+                                    ),
+                                  );
                                   _bloc.add(
-                                        SetSnacksListEvent(
-                                          currentSnacksList: _chipsList,
-                                        ),
-                                      );
+                                    SetSnacksListEvent(
+                                      currentSnacksList: _chipsList,
+                                    ),
+                                  );
                                 },
                                 text: "Chips",
                                 isSelected: state.selectedSnackTypeItem ==
@@ -172,15 +173,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 assetPath: "assets/svg/ic_candy.svg",
                                 onTap: () {
                                   _bloc.add(
-                                        const SnackTypeSelectedEvent(
-                                          snackType: SnackTypes.sweets,
-                                        ),
-                                      );
+                                    const SnackTypeSelectedEvent(
+                                      snackType: SnackTypes.sweets,
+                                    ),
+                                  );
                                   _bloc.add(
-                                        SetSnacksListEvent(
-                                          currentSnacksList: _sweetsList,
-                                        ),
-                                      );
+                                    SetSnacksListEvent(
+                                      currentSnacksList: _sweetsList,
+                                    ),
+                                  );
                                 },
                                 text: "Sweets",
                                 isSelected: state.selectedSnackTypeItem ==
@@ -192,7 +193,8 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                       ),
                     ),
                     SliverPadding(
-                      padding: EdgeInsets.only(top: 32.h,right: 30.w,left: 30.w),
+                      padding: EdgeInsets.only(
+                          top: 32.h, right: 46.w, left: 46.w, bottom: 42.h),
                       sliver: SliverToBoxAdapter(
                         child: GestureDetector(
                           onTap: (){
@@ -242,11 +244,12 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                   shape: BoxShape.circle,
                                   color: ThemeColors.secondaryColor,
                                 ),
-                                child: const Center(
+                                child: Center(
                                   child: Text(
                                     "1",
                                     style: TextStyle(
-                                        color: ThemeColors.black, fontSize: 18),
+                                        color: ThemeColors.black,
+                                        fontSize: 18.sp),
                                   ),
                                 ),
                               ),
@@ -256,16 +259,18 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
-                                children: const [
+                                children: [
                                   Text(
                                     "Cart",
                                     style: TextStyle(
-                                        color: ThemeColors.white, fontSize: 22),
+                                        color: ThemeColors.white,
+                                        fontSize: 22.sp),
                                   ),
                                   Text(
                                     "1 item",
                                     style: TextStyle(
-                                        color: ThemeColors.white, fontSize: 18),
+                                        color: ThemeColors.white,
+                                        fontSize: 18.sp),
                                   )
                                 ],
                               ),
