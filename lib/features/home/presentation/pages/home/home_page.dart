@@ -2,11 +2,11 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qclay_test/core/theme/colors/theme_colors.dart';
-import 'package:qclay_test/core/theme/text/theme_text_styles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:qclay_test/injector_container.dart';
+import 'dart:math' as math;
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,6 +49,40 @@ class _HomePageBodyState extends State<HomePageBody> {
       listener: (_, state) {},
       builder: (_, state) {
         return Scaffold(
+          backgroundColor: Color(0xFFEFEFEF),
+          body: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: 88.w,
+                height: 210.h,
+                child: CustomPaint(
+                  painter: RPSCustomPainterBtn(),
+                  child: Center(
+                      child: Icon(
+                    Icons.add,
+                    size: 47.w,
+                  )),
+                ),
+              ),
+              SizedBox(
+                width: 88.w,
+                height: 210.h,
+                child: Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.rotationY(math.pi),
+                  child: CustomPaint(
+                    painter: RPSCustomPainterBtn(),
+                    child: Center(
+                        child: Icon(
+                          Icons.remove,
+                          size: 47.w,
+                        )),
+                  ),
+                ),
+              ),
+            ],
+          ),
           bottomNavigationBar: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -65,7 +99,7 @@ class _HomePageBodyState extends State<HomePageBody> {
               Container(
                 margin: AppUtils.kPaddingAll6,
                 alignment: Alignment.topCenter,
-                width: size.width*0.12,
+                width: size.width * 0.12,
                 height: 4,
                 decoration: const BoxDecoration(
                   color: Color(0xffC9C9C9),
@@ -131,5 +165,57 @@ class RPSCustomPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return false;
+  }
+}
+
+class RPSCustomPainterBtn extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Path path_0 = Path();
+    path_0.moveTo(0, size.height * 0.9976303);
+    path_0.lineTo(0, 0);
+    path_0.lineTo(size.width * 0.3178652, size.height * 0.1752128);
+    path_0.cubicTo(
+        size.width * 0.4345730,
+        size.height * 0.2395441,
+        size.width * 0.5780011,
+        size.height * 0.2944043,
+        size.width * 0.7411719,
+        size.height * 0.3371232);
+    path_0.cubicTo(
+        size.width * 1.076096,
+        size.height * 0.4248090,
+        size.width * 1.074062,
+        size.height * 0.6306682,
+        size.width * 0.7374157,
+        size.height * 0.7171706);
+    path_0.lineTo(size.width * 0.6846079, size.height * 0.7307393);
+    path_0.cubicTo(
+        size.width * 0.5583292,
+        size.height * 0.7631896,
+        size.width * 0.4426236,
+        size.height * 0.8024455,
+        size.width * 0.3404157,
+        size.height * 0.8475166);
+    path_0.lineTo(0, size.height * 0.9976303);
+    path_0.close();
+
+    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
+    paint_0_fill.shader = ui.Gradient.linear(
+      Offset(size.width * 0.9293416, size.height * 0.5592417),
+      Offset(size.width * 0.2375607, size.height * 0.5592417),
+      [
+        Colors.white,
+        Color(0xFFF0F0F0),
+      ],
+      [0, 1],
+    );
+    canvas.drawPath(path_0, paint_0_fill);
+    canvas.drawPath(path_0, paint_0_fill);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }

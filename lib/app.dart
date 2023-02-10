@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:qclay_test/core/app_bloc/app_bloc.dart';
 import 'package:qclay_test/core/theme/theme_data.dart';
@@ -14,11 +15,18 @@ class App extends StatelessWidget {
     return BlocBuilder<AppBloc, AppState>(
       builder: (_, state) {
         return KeyboardDismisser(
-          child: MaterialApp.router(
-            title: 'qclay_test',
-            debugShowCheckedModeBanner: false,
-            theme: appTheme,
-            routerConfig: router,
+          child: ScreenUtilInit(
+            designSize: const Size(428, 926),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (BuildContext context, Widget? child) {
+              return MaterialApp.router(
+                title: 'qclay_test',
+                debugShowCheckedModeBanner: false,
+                theme: appTheme,
+                routerConfig: router,
+              );
+            },
           ),
         );
       },
