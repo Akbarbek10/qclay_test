@@ -2,39 +2,39 @@ part of 'package:qclay_test/features/home/presentation/pages/product/product_pag
 
 mixin ProductMixin {
   late ProductBloc _bloc;
-  late List<SnackItemModel> _snack;
+  // late List<SnackItemModel> _snack;
 
   _initState(BuildContext context) {
     _bloc = context.read<ProductBloc>();
-    _snack = [
-      SnackItemModel(
-        backgroundColor: ThemeColors.chocoSnackColorPink,
-        type: "All",
-        imageUrl: "assets/png/choco.png",
-        price: "0.8",
-        name: "Good\nSource",
-      ),
-      SnackItemModel(
-        backgroundColor:  ThemeColors.chocoSnackColorPink,
-        type: "Chocolate",
-        imageUrl: "assets/png/choco.png",
-        price: "0.8",
-        name: "Good\nSource",
-      ),
-      SnackItemModel(
-        backgroundColor:  ThemeColors.chipsSnackColorGreen,
-        type: "Chips",
-        imageUrl: "assets/png/chips.png",
-        price: "0.3",
-        name: "Smiths\nChips",
-      ),
-      SnackItemModel(
-        type: "Sweet",
-        imageUrl: "assets/png/chips.png",
-        price: "0.7",
-        name: "Smiths\nSweets",
-      ),
-    ];
+    // _snack = [
+    //   SnackItemModel(
+    //     backgroundColor: ThemeColors.chocoSnackColorPink,
+    //     type: "All",
+    //     imageUrl: "assets/png/choco.png",
+    //     price: "0.8",
+    //     name: "Good\nSource",
+    //   ),
+    //   SnackItemModel(
+    //     backgroundColor:  ThemeColors.chocoSnackColorPink,
+    //     type: "Chocolate",
+    //     imageUrl: "assets/png/choco.png",
+    //     price: "0.8",
+    //     name: "Good\nSource",
+    //   ),
+    //   SnackItemModel(
+    //     backgroundColor:  ThemeColors.chipsSnackColorGreen,
+    //     type: "Chips",
+    //     imageUrl: "assets/png/chips.png",
+    //     price: "0.3",
+    //     name: "Smiths\nChips",
+    //   ),
+    //   SnackItemModel(
+    //     type: "Sweet",
+    //     imageUrl: "assets/png/chips.png",
+    //     price: "0.7",
+    //     name: "Smiths\nSweets",
+    //   ),
+    // ];
   }
 
   _dispose() {

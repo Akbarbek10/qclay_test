@@ -4,11 +4,16 @@ abstract class ProductEvent extends Equatable {
   const ProductEvent();
 }
 
-// class SnackTypeSelectedEvent extends ProductEvent {
-//   final SnackTypes snackType;
-//
-//   const SnackTypeSelectedEvent({required this.snackType});
-//
-//   @override
-//   List<Object?> get props => [snackType];
-// }
+class IncreaseQuantityEvent extends ProductEvent {
+  const IncreaseQuantityEvent();
+
+  @override
+  List<Object?> get props => [];
+}
+
+class DecreaseQuantityEvent extends ProductEvent {
+  const DecreaseQuantityEvent();
+
+  @override
+  List<Object?> get props => [];
+}

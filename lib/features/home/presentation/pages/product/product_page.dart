@@ -37,7 +37,7 @@ class ProductPageBody extends StatefulWidget {
 class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
   @override
   void initState() {
-    // _initState(context);
+    _initState(context);
     super.initState();
   }
 
@@ -62,7 +62,7 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
       listener: (_, state) {},
       builder: (_, state) {
         return Scaffold(
-          backgroundColor: Color(0xFFFEFEFE),
+          backgroundColor: const Color(0xFFFEFEFE),
           body: SafeArea(
             child: Container(
               decoration: const BoxDecoration(
@@ -178,15 +178,20 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            SizedBox(
-                              width: 88.w,
-                              height: 210.h,
-                              child: CustomPaint(
-                                size: Size(88.w, 210.h),
-                                painter: AddRemoveBtnCustomPainter(),
-                                child: Icon(
-                                  Icons.add,
-                                  size: 34.r,
+                            GestureDetector(
+                              onTap: (){
+                                _bloc.add(const IncreaseQuantityEvent());
+                              },
+                              child: SizedBox(
+                                width: 88.w,
+                                height: 210.h,
+                                child: CustomPaint(
+                                  size: Size(88.w, 210.h),
+                                  painter: AddRemoveBtnCustomPainter(),
+                                  child: Icon(
+                                    Icons.add,
+                                    size: 34.r,
+                                  ),
                                 ),
                               ),
                             ),
@@ -196,38 +201,46 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "03",
+                                  "${state.product.quantity}",
                                   style: ThemeTextStyles.blackExtraBold46,
                                 ),
                                 AppUtils.kBoxHeight4,
                                 Container(
+                                  width: 155.w,
                                   padding: EdgeInsets.symmetric(
                                     vertical: 16.h,
-                                    horizontal: 33.w,
+                                    // horizontal: 33.w,
                                   ),
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     borderRadius: AppUtils.kBorderRadius44,
                                     color: ThemeColors.secondaryColor,
                                   ),
-                                  child: Text(
-                                    r"$ 6.00",
-                                    style: ThemeTextStyles.blackExtraBold24,
+                                  child: Center(
+                                    child: Text(
+                                      r"$""${state.product.totalSum}",
+                                      style: ThemeTextStyles.blackExtraBold24,
+                                    ),
                                   ),
                                 )
                               ],
                             ),
                             AppUtils.kSpacer,
-                            SizedBox(
-                              width: 88.w,
-                              height: 210.h,
-                              child: Transform.scale(
-                                scaleX: -1,
-                                child: CustomPaint(
-                                  size: Size(88.w, 210.h),
-                                  painter: AddRemoveBtnCustomPainter(),
-                                  child: Icon(
-                                    Icons.remove,
-                                    size: 34.r,
+                            GestureDetector(
+                              onTap: (){
+                                _bloc.add(const DecreaseQuantityEvent());
+                              },
+                              child: SizedBox(
+                                width: 88.w,
+                                height: 210.h,
+                                child: Transform.scale(
+                                  scaleX: -1,
+                                  child: CustomPaint(
+                                    size: Size(88.w, 210.h),
+                                    painter: AddRemoveBtnCustomPainter(),
+                                    child: Icon(
+                                      Icons.remove,
+                                      size: 34.r,
+                                    ),
                                   ),
                                 ),
                               ),

@@ -1,14 +1,14 @@
 part of 'product_bloc.dart';
 
 class ProductState extends Equatable {
-  final String? product;
+  final ProductModel product;
 
   const ProductState({
-     this.product,
+    this.product = const ProductModel(),
   });
 
   ProductState copyWith({
-    String? product,
+    ProductModel? product,
   }) {
     return ProductState(
       product: product ?? this.product,
