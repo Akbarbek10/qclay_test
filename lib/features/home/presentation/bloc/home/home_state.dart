@@ -7,7 +7,7 @@ class HomeState extends Equatable {
   final bool? isCardDragging;
   final Size? size;
   final double? cardAngle;
-  final List<List<SnackItemModel>> snacksList;
+  final List<SnackItemModel> currentSnacksList;
 
   const HomeState({
     this.size,
@@ -16,7 +16,7 @@ class HomeState extends Equatable {
     required this.cardItemPosition,
     this.isCardDragging = false,
     this.cartItems = const [],
-    this.snacksList = const [],
+    this.currentSnacksList = const [],
   });
 
   HomeState copyWith(
@@ -24,13 +24,13 @@ class HomeState extends Equatable {
       List<SnackItemModel>? cartItems,
       Offset? cardItemPosition,
       Size? size,
-      List<List<SnackItemModel>>? snacksList,
+      List<SnackItemModel>? currentSnacksList,
       double? cardAngle,
       bool? isCardDragging}) {
     return HomeState(
         isCardDragging: isCardDragging ?? this.isCardDragging,
         size: size ?? this.size,
-        snacksList:snacksList!=null ? [...snacksList] : this.snacksList,
+        currentSnacksList: currentSnacksList!=null ?  [...currentSnacksList]: this.currentSnacksList,
         cardAngle: cardAngle ?? this.cardAngle,
         cartItems: cartItems ?? this.cartItems,
         cardItemPosition: cardItemPosition ?? this.cardItemPosition,
@@ -40,7 +40,7 @@ class HomeState extends Equatable {
 
   @override
   List<Object?> get props => [
-        snacksList,
+        currentSnacksList,
         selectedSnackTypeItem,
         cartItems,
         cardItemPosition,

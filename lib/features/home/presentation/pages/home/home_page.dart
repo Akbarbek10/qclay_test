@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qclay_test/core/paints/custom_bottom_painter/custom_bottom_widget.dart';
-import 'package:qclay_test/core/theme/icons/app_icons.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/widgets/back_button/back_button.dart';
@@ -41,6 +40,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
     super.initState();
     if (!mounted) return;
     _initState(context);
+
     WidgetsBinding.instance.addPersistentFrameCallback((timeStamp) {
       final size = MediaQuery.of(context).size;
       _bloc.add(SetSizeEvent(size: size));
@@ -67,7 +67,6 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
     return BlocConsumer<HomeBloc, HomeState>(
       listener: (_, state) {},
       builder: (_, state) {
-        debugPrint("LELELELLELE ${state.snacksList.length}");
         return Scaffold(
           backgroundColor: ThemeColors.white,
           body: Stack(
@@ -106,24 +105,69 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SnackTypeItemWidget(
-                                snackType: SnackTypes.all,
+                                hasIcon: false,
+                                onTap: () {
+                                  context.read<HomeBloc>().add(
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.all,
+                                        ),
+                                      );
+                                  context.read<HomeBloc>().add(
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _allList,
+                                        ),
+                                      );
+                                },
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.all,
                               ),
                               SnackTypeItemWidget(
+                                onTap: () {
+                                  context.read<HomeBloc>().add(
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.choco,
+                                        ),
+                                      );
+                                  context.read<HomeBloc>().add(
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _chocoList,
+                                        ),
+                                      );
+                                },
                                 text: "Choco",
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.choco,
-                                snackType: SnackTypes.choco,
                               ),
                               SnackTypeItemWidget(
+                                onTap: () {
+                                  context.read<HomeBloc>().add(
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.chips,
+                                        ),
+                                      );
+                                  context.read<HomeBloc>().add(
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _chipsList,
+                                        ),
+                                      );
+                                },
                                 text: "Chips",
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.chips,
-                                snackType: SnackTypes.chips,
                               ),
                               SnackTypeItemWidget(
-                                snackType: SnackTypes.sweets,
+                                onTap: () {
+                                  context.read<HomeBloc>().add(
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.sweets,
+                                        ),
+                                      );
+                                  context.read<HomeBloc>().add(
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _sweetsList,
+                                        ),
+                                      );
+                                },
                                 text: "Sweets",
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.sweets,
@@ -160,18 +204,14 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                       padding: AppUtils.kPaddingHor30Top32,
                       sliver: SliverToBoxAdapter(
                         child: Stack(
-                            children: state.snacksList.isNotEmpty
-                                ? state.snacksList[state.selectedSnackTypeItem.index]
+                            children: state.currentSnacksList.isNotEmpty
+                                ? state.currentSnacksList
                                     .map(
                                       (snack) => SnackCardItem(
                                         bloc: _bloc,
                                         state: state,
                                         snack: snack,
-                                        isFont: state
-                                                .snacksList[state
-                                                    .selectedSnackTypeItem
-                                                    .index]
-                                                .last ==
+                                        isFont: state.currentSnacksList.last ==
                                             snack,
                                       ),
                                     )

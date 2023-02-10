@@ -47,7 +47,6 @@ class UpdatePositionEvent extends HomeEvent {
 }
 
 class EndPositionEvent extends HomeEvent {
-
   const EndPositionEvent();
 
   @override
@@ -63,13 +62,13 @@ class SetSizeEvent extends HomeEvent {
   List<Object?> get props => [size];
 }
 
-class InitSnacksListEvent extends HomeEvent {
-  final List<List<SnackItemModel>> snacksList;
+class SetSnacksListEvent extends HomeEvent {
+  final List<SnackItemModel> currentSnacksList;
 
-  const InitSnacksListEvent({required this.snacksList});
+  const SetSnacksListEvent({required this.currentSnacksList});
 
   @override
   List<Object?> get props => [
-        snacksList,
+        currentSnacksList,
       ];
 }

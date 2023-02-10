@@ -141,9 +141,8 @@ class _SnackCardItemState extends State<SnackCardItem> {
           widget.bloc.add(UpdatePositionEvent(details: details));
         },
         onPanEnd: (details) {
-          widget.bloc.add(EndPositionEvent());
+          widget.bloc.add(const EndPositionEvent());
         },
-        onTap: () => widget.bloc.add(AddSnackToCartEvent(snack: widget.snack)),
         child: LayoutBuilder(
           builder: (context, constraints) {
             final center = constraints.smallest.center(Offset.zero);

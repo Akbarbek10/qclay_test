@@ -18,23 +18,24 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           ),
         ) {
     on<SnackTypeSelectedEvent>(_onSnackTypeSelected);
-    on<AddSnackToCartEvent>(_onAddSnackToCart);
     on<StartPositionEvent>(_onStartPosition);
     on<UpdatePositionEvent>(_onUpdatePosition);
     on<EndPositionEvent>(_onEndPosition);
     on<SetSizeEvent>(_onSizeSet);
-    on<InitSnacksListEvent>(_onInitSnacksList);
+    on<SetSnacksListEvent>(_onSetCurrentSnacksList);
   }
 
   _onSnackTypeSelected(SnackTypeSelectedEvent event, Emitter<HomeState> emit) {
-    emit(state.copyWith(
-      selectedSnackTypeItem: event.snackType,
-    ));
+    emit(
+      state.copyWith(
+        selectedSnackTypeItem: event.snackType,
+      ),
+    );
   }
 
-  _onAddSnackToCart(AddSnackToCartEvent event, Emitter<HomeState> emit) {
+  _addSnackToCart(SnackItemModel snack, Emitter<HomeState> emit) {
     var cartItems = [...state.cartItems];
-    cartItems.add(event.snack!);
+    cartItems.add(snack);
     if (cartItems.length > 3) {
       cartItems.removeAt(0);
       emit(state.copyWith(cartItems: cartItems));
@@ -74,26 +75,27 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _nextCard(Emitter<HomeState> emit) async {
-    int index = state.selectedSnackTypeItem.index;
-    var list = state.snacksList![index];
+    var list = [...state.currentSnacksList];
 
-    if (list.isEmpty) {
-      return;
-    }
+    _addSnackToCart(list.last, emit);
+
     list.removeLast();
-    var snacksList = [...?state.snacksList];
-    snacksList[index] = list;
+    debugPrint("${list.length}");
+    emit(state.copyWith(currentSnacksList: list));
 
-    emit(state.copyWith(snacksList: snacksList));
+    _resetPosition(emit);
+
+    debugPrint("${state.currentSnacksList.length}");
   }
 
-  _onEndPosition(EndPositionEvent event, Emitter<HomeState> emit) {
+  _onEndPosition(EndPositionEvent event, Emitter<HomeState> emit) async {
     var y = state.cardItemPosition.dy;
     emit(
       state.copyWith(isCardDragging: false),
     );
     if (y <= -20) {
-      _swipeLeftRight(emit);
+      await _swipeLeftRight(emit);
+
       return;
     }
     _resetPosition(emit);
@@ -106,11 +108,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     );
   }
 
-  _onInitSnacksList(InitSnacksListEvent event, Emitter<HomeState> emit) {
-    debugPrint("ASDDSDSAD ${event.snacksList.length}");
+  _onSetCurrentSnacksList(SetSnacksListEvent event, Emitter<HomeState> emit) {
     emit(
       state.copyWith(
-        snacksList: event.snacksList,
+        currentSnacksList: event.currentSnacksList,
       ),
     );
   }
@@ -125,7 +126,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   _swipeLeftRight(
     Emitter<HomeState> emit,
-  ) {
+  ) async {
     var angle = 20.0;
     var sizeWidth = state.size?.width;
     var position = state.cardItemPosition;
@@ -137,12 +138,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (x > 0) {
       position += Offset(2 * sizeWidth!, 0);
     }
-    emit(
-      state.copyWith(
-        cardItemPosition: position,
-        cardAngle: angle,
-      ),
-    );
-    _nextCard(emit);
+
+    emit(state.copyWith(
+      cardItemPosition: position,
+      cardAngle: angle,
+    ));
+    await _nextCard(emit);
   }
 }
