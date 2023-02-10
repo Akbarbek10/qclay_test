@@ -207,7 +207,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                     style: ThemeTextStyles.black25Weight700),
                               ]),
                             )),
-                            Icon(
+                            const Icon(
                               Icons.arrow_right_alt_sharp,
                               size: 32,
                             )
