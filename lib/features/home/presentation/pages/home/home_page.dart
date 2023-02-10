@@ -116,12 +116,12 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                               SnackTypeItemWidget(
                                 hasIcon: false,
                                 onTap: () {
-                                  context.read<HomeBloc>().add(
+                                  _bloc.add(
                                         const SnackTypeSelectedEvent(
                                           snackType: SnackTypes.all,
                                         ),
                                       );
-                                  context.read<HomeBloc>().add(
+                                  _bloc.add(
                                         SetSnacksListEvent(
                                           currentSnacksList: _allList,
                                         ),
@@ -133,12 +133,12 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                               SnackTypeItemWidget(
                                 assetPath: "assets/svg/ic_choco.svg",
                                 onTap: () {
-                                  context.read<HomeBloc>().add(
+                                  _bloc.add(
                                         const SnackTypeSelectedEvent(
                                           snackType: SnackTypes.choco,
                                         ),
                                       );
-                                  context.read<HomeBloc>().add(
+                                  _bloc.add(
                                         SetSnacksListEvent(
                                           currentSnacksList: _chocoList,
                                         ),
@@ -151,12 +151,12 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                               SnackTypeItemWidget(
                                 assetPath: "assets/svg/ic_chips.svg",
                                 onTap: () {
-                                  context.read<HomeBloc>().add(
+                                  _bloc.add(
                                         const SnackTypeSelectedEvent(
                                           snackType: SnackTypes.chips,
                                         ),
                                       );
-                                  context.read<HomeBloc>().add(
+                                  _bloc.add(
                                         SetSnacksListEvent(
                                           currentSnacksList: _chipsList,
                                         ),
@@ -169,12 +169,12 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                               SnackTypeItemWidget(
                                 assetPath: "assets/svg/ic_candy.svg",
                                 onTap: () {
-                                  context.read<HomeBloc>().add(
+                                  _bloc.add(
                                         const SnackTypeSelectedEvent(
                                           snackType: SnackTypes.sweets,
                                         ),
                                       );
-                                  context.read<HomeBloc>().add(
+                                  _bloc.add(
                                         SetSnacksListEvent(
                                           currentSnacksList: _sweetsList,
                                         ),
@@ -190,33 +190,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                       ),
                     ),
                     SliverPadding(
-                      padding: AppUtils.kPaddingLeft44Top25Right55,
-                      sliver: SliverToBoxAdapter(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                child: RichText(
-                              text: TextSpan(children: [
-                                TextSpan(
-                                    text: "Choco ",
-                                    style: ThemeTextStyles.black25Weight400),
-                                TextSpan(
-                                    text: "Collections",
-                                    style: ThemeTextStyles.black25Weight700),
-                              ]),
-                            )),
-                            const Icon(
-                              Icons.arrow_right_alt_sharp,
-                              size: 32,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    SliverPadding(
-                      padding: AppUtils.kPaddingHor30Top32,
+                      padding: EdgeInsets.only(top: 32.h,right: 30.w,left: 30.w),
                       sliver: SliverToBoxAdapter(
                         child: Stack(
                             children: state.currentSnacksList.isNotEmpty
