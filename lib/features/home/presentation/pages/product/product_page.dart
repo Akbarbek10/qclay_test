@@ -3,15 +3,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qclay_test/core/paints/add_remove_button_painter/add_remove_button_painter.dart';
-import 'package:qclay_test/core/paints/custom_bottom_widget/custom_bottom_widget.dart';
+import 'package:qclay_test/core/paints/add_remove_button_painter/add_remove_button_widget.dart';
+import 'package:qclay_test/core/theme/text/theme_text_styles.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/widgets/back_button/back_button.dart';
-import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
+import 'package:qclay_test/core/widgets/buttons/bottom_action_widget.dart';
 import 'package:qclay_test/features/home/presentation/bloc/product/product_bloc.dart';
 import 'package:qclay_test/injector_container.dart';
-import 'dart:math' as math;
 
 part 'package:qclay_test/features/home/presentation/pages/product/mixins/product_mixin.dart';
 
@@ -88,10 +87,11 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                           padding: AppUtils.kPaddingHor38,
                           child: Row(
                             children: [
-                              const Expanded(
+                              Expanded(
                                 child: Text(
                                   "Coconut \nChips",
-                                  style: TextStyle(fontSize: 30),
+                                  style: ThemeTextStyles.blackExtraBold42
+                                      .copyWith(height: 1.1),
                                 ),
                               ),
                               AppUtils.kBoxWidth8,
@@ -103,11 +103,15 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                           ),
                         ),
                         SizedBox(height: 14.h),
-                        const Padding(
+                        Padding(
                           padding: AppUtils.kPaddingHor38,
                           child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text("dang"),
+                            child: Text(
+                              "dang",
+                              style: ThemeTextStyles.blackRegular20.copyWith(
+                                  color: ThemeColors.black.withOpacity(0.4)),
+                            ),
                           ),
                         ),
                         SizedBox(height: 24.h),
@@ -129,7 +133,6 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                                     sigmaY: 8,
                                     sigmaX: 8,
                                   ),
-
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color:
@@ -149,17 +152,18 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                                         children: [
                                           Text(
                                             "Pure\nCoconut",
-                                            style: TextStyle(
-                                              color: ThemeColors.black
-                                                  .withOpacity(0.4),
-                                            ),
+                                            style: ThemeTextStyles
+                                                .blackRegular14
+                                                .copyWith(
+                                                    color: ThemeColors.black
+                                                        .withOpacity(0.4)),
                                           ),
                                           AppUtils.kBoxWidth14,
-                                          Text("100%",style: TextStyle(
-                                            fontSize: 24,
-                                            color: ThemeColors.black,
-                                            fontWeight: FontWeight.w500,
-                                          ),),
+                                          Text(
+                                            "100%",
+                                            style: ThemeTextStyles
+                                                .blackExtraBold26,
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -189,7 +193,10 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("03"),
+                                Text(
+                                  "03",
+                                  style: ThemeTextStyles.blackExtraBold46,
+                                ),
                                 AppUtils.kBoxHeight4,
                                 Container(
                                   padding: EdgeInsets.symmetric(
@@ -200,7 +207,10 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                                     borderRadius: AppUtils.kBorderRadius44,
                                     color: ThemeColors.secondaryColor,
                                   ),
-                                  child: Text(r"$ 6.00"),
+                                  child: Text(
+                                    r"$ 6.00",
+                                    style: ThemeTextStyles.blackExtraBold24,
+                                  ),
                                 )
                               ],
                             ),
@@ -229,33 +239,10 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                     bottom: 20.h,
                     left: 36.w,
                     right: 36.w,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: ThemeColors.white,
-                        borderRadius: AppUtils.kBorderRadius54,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(7.r),
-                        child: Row(
-                          children: [
-                            SizedBox(width: 50.w),
-                            Text("Add to Cart"),
-                            AppUtils.kSpacer,
-                            Container(
-                              width: 105.w,
-                              height: 80.h,
-                              decoration: const BoxDecoration(
-                                color: ThemeColors.secondaryColor,
-                                borderRadius: AppUtils.kBorderRadius54,
-                              ),
-                              child: Icon(
-                                Icons.shopping_bag,
-                                size: 32.r,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                    child: BottomActionWidget(
+                      iconData: Icons.shopping_bag,
+                      text: "Add to Cart",
+                      onTap: (){},
                     ),
                   )
                 ],

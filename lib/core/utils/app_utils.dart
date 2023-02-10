@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 
 class AppUtils {
   AppUtils._();
@@ -10,10 +11,10 @@ class AppUtils {
     color: Color(0xFFF0F0F0),
   );
 
-  static const kDivider = Divider(
+  static final kDivider = Divider(
     height: 1,
     thickness: 1,
-    color: Color(0xFFE0E0E0),
+    color: const Color(0xFF000000).withOpacity(0.3),
   );
   static const kDivider0 = Divider();
 
@@ -36,7 +37,7 @@ class AppUtils {
   static const kBoxHeight24 = SizedBox(height: 24);
   static const kBoxHeight30 = SizedBox(height: 30);
   static const kBoxHeight40 = SizedBox(height: 40);
-  static const kBoxHeight50 = SizedBox(height: 40);
+  static const kBoxHeight50 = SizedBox(height: 50);
   static const kBoxHeight54 = SizedBox(height: 54);
 
   static const kBoxWidth2 = SizedBox(width: 2);
@@ -67,13 +68,13 @@ class AppUtils {
   static const kPaddingAll12 = EdgeInsets.all(12);
   static const kPaddingVer8Hor16 =
       EdgeInsets.symmetric(vertical: 8, horizontal: 16);
+  static const kPaddingVer6Hor16 =
+      EdgeInsets.symmetric(vertical: 6, horizontal: 16);
   static const kPaddingHor21Ver18 =
       EdgeInsets.symmetric(horizontal: 21, vertical: 18);
   static const kPaddingHor38 = EdgeInsets.symmetric(horizontal: 38);
   static const kPaddingAll16 = EdgeInsets.all(16);
   static const kPaddingRight48 = EdgeInsets.only(right: 48);
-  static const kPaddingVer8Hor16 = EdgeInsets.symmetric(vertical: 8,horizontal: 16);
-  static const kPaddingHor21Ver18 = EdgeInsets.symmetric(horizontal: 21,vertical: 18);
   static const kPaddingLeft44Top25Right55 =
       EdgeInsets.only(left: 44, top: 25, right: 55);
   static const kPaddingLeft44Right38 = EdgeInsets.only(left: 44, right: 38);
@@ -99,8 +100,10 @@ class AppUtils {
   static const kBorderRadius12 = BorderRadius.all(Radius.circular(12));
   static const kBorderRadius22 = BorderRadius.all(Radius.circular(22));
   static const kBorderRadius24 = BorderRadius.all(Radius.circular(24));
+  static const kBorderRadius27 = BorderRadius.all(Radius.circular(27));
   static const kBorderRadius30 = BorderRadius.all(Radius.circular(30));
   static const kBorderRadius32 = BorderRadius.all(Radius.circular(32));
+  static const kBorderRadius34 = BorderRadius.all(Radius.circular(34));
   static const kBorderRadius38 = BorderRadius.all(Radius.circular(38));
   static const kBorderRadius44 = BorderRadius.all(Radius.circular(44));
   static const kBorderRadius54 = BorderRadius.all(Radius.circular(54));

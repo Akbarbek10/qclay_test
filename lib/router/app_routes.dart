@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qclay_test/features/cart/presentation/pages/cart/cart_page.dart';
 import 'package:qclay_test/features/home/presentation/pages/home/home_page.dart';
 import 'package:qclay_test/features/home/presentation/pages/product/product_page.dart';
 
@@ -21,6 +22,12 @@ final GoRouter router = GoRouter(
       name: Routes.product,
       path: Routes.product,
       builder: (_, __) => const ProductPage(),
+    ),
+
+    GoRoute(
+      name: Routes.cart,
+      path: Routes.cart,
+      builder: (_, __) => const CartPage(),
     ),
 
   ],

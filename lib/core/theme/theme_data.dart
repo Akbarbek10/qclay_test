@@ -5,6 +5,7 @@ final appTheme = ThemeData(
   useMaterial3: true,
   applyElevationOverlayColor: true,
   // disabledColor: ThemeColors.disabledColor,
+  fontFamily: 'Plus-Jakarta-Sans',
   splashColor: ThemeColors.primaryColor.withOpacity(0.01),
   focusColor: ThemeColors.primaryColor,
   colorSchemeSeed: ThemeColors.primaryColor,

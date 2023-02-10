@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qclay_test/core/paints/custom_bottom_widget/custom_bottom_widget.dart';
+import 'package:qclay_test/core/paints/custom_bottom_painter/custom_bottom_widget.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/widgets/back_button/back_button.dart';
+import 'package:qclay_test/core/widgets/lines/bottom_sheet_line_widget.dart';
 import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:qclay_test/features/home/presentation/pages/home/models/snack_item_model.dart';
 import 'package:qclay_test/injector_container.dart';
@@ -228,15 +229,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                         ),
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.topCenter,
-                      width: 44.w,
-                      height: 4.h,
-                      decoration: const BoxDecoration(
-                        color: ThemeColors.greyC9,
-                        borderRadius: AppUtils.kBorderRadius12,
-                      ),
-                    )
+                    const BottomSheetLineWidget(),
                   ],
                 ),
               ),
