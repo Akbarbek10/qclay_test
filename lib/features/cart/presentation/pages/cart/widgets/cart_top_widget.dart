@@ -15,11 +15,13 @@ class CartTopWidget extends StatelessWidget {
         Padding(
           padding: AppUtils.kPaddingHor38,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Cart",
-                style: ThemeTextStyles.blackExtraBold42,
+              Expanded(
+                child: Text(
+                  "Cart",
+                  style: ThemeTextStyles.blackExtraBold42,
+                  textAlign: TextAlign.start,
+                ),
               ),
               Container(
                 width: 44.w,

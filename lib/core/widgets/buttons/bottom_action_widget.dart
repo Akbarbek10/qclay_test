@@ -35,7 +35,6 @@ class BottomActionWidget extends StatelessWidget {
                 child: Text(
                   text,
                   style: ThemeTextStyles.blackExtraBold20,
-                  textAlign: TextAlign.start,
                 ),
               ),
               Container(
@@ -54,7 +53,7 @@ class BottomActionWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

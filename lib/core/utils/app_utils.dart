@@ -98,9 +98,11 @@ class AppUtils {
   static const kBorderRadius8 = BorderRadius.all(Radius.circular(8));
   static const kBorderRadius10 = BorderRadius.all(Radius.circular(10));
   static const kBorderRadius12 = BorderRadius.all(Radius.circular(12));
+  static const kBorderRadius16 = BorderRadius.all(Radius.circular(16));
   static const kBorderRadius22 = BorderRadius.all(Radius.circular(22));
   static const kBorderRadius24 = BorderRadius.all(Radius.circular(24));
   static const kBorderRadius27 = BorderRadius.all(Radius.circular(27));
+  static const kBorderRadius28 = BorderRadius.all(Radius.circular(28));
   static const kBorderRadius30 = BorderRadius.all(Radius.circular(30));
   static const kBorderRadius32 = BorderRadius.all(Radius.circular(32));
   static const kBorderRadius34 = BorderRadius.all(Radius.circular(34));

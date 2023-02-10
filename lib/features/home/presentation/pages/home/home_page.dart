@@ -9,8 +9,8 @@ import 'package:qclay_test/core/widgets/back_button/back_button.dart';
 import 'package:qclay_test/core/widgets/lines/bottom_sheet_line_widget.dart';
 import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:qclay_test/features/home/presentation/pages/home/models/snack_item_model.dart';
+import 'package:qclay_test/features/home/presentation/pages/home/widgets/home_cart_item_widget.dart';
 import 'package:qclay_test/injector_container.dart';
-import 'widgets/cart_item_widget.dart';
 import 'widgets/snack_card_item.dart';
 import 'widgets/snack_type_item_widget.dart';
 
@@ -109,24 +109,36 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 snackType: SnackTypes.all,
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.all,
+                                onTap: (){
+                                  _bloc.add(const SnackTypeSelectedEvent(snackType: SnackTypes.all,));
+                                },
                               ),
                               SnackTypeItemWidget(
                                 text: "Choco",
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.choco,
                                 snackType: SnackTypes.choco,
+                                onTap: (){
+                                  _bloc.add(const SnackTypeSelectedEvent(snackType: SnackTypes.choco,));
+                                },
                               ),
                               SnackTypeItemWidget(
                                 text: "Chips",
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.chips,
                                 snackType: SnackTypes.chips,
+                                onTap: (){
+                                  _bloc.add(const SnackTypeSelectedEvent(snackType: SnackTypes.chips,));
+                                },
                               ),
                               SnackTypeItemWidget(
                                 snackType: SnackTypes.sweets,
                                 text: "Sweets",
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.sweets,
+                                onTap: (){
+                                  _bloc.add(const SnackTypeSelectedEvent(snackType: SnackTypes.chips,));
+                                },
                               ),
                             ],
                           ),
@@ -240,7 +252,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 scrollDirection: Axis.horizontal,
                                 itemCount: state.cartItems.length,
                                 itemBuilder: (BuildContext context, int index) {
-                                  return CartItemWidget(
+                                  return HomeCartItemWidget(
                                     item: state.cartItems[index],
                                   );
                                 },

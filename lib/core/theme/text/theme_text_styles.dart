@@ -65,9 +65,17 @@ class ThemeTextStyles {
     fontWeight: FontWeight.w700,
   );
 
+
+
   static final whiteRegular14 = TextStyle(
     color: ThemeColors.white,
     fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  static final blackRegular12 = TextStyle(
+    color: ThemeColors.black,
+    fontSize: 12.sp,
     fontWeight: FontWeight.w400,
   );
 
@@ -87,6 +95,18 @@ class ThemeTextStyles {
     color: ThemeColors.white,
     fontSize: 14.sp,
     fontWeight: FontWeight.w700,
+  );
+
+  static final whiteExtraBold22 = TextStyle(
+    color: ThemeColors.white,
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w700,
+  );
+
+  static final whiteRegular19 = TextStyle(
+    color: ThemeColors.white,
+    fontSize: 19.sp,
+    fontWeight: FontWeight.w400,
   );
 
   static final blackSemiBold18 = TextStyle(

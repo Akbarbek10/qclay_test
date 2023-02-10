@@ -8,17 +8,20 @@ class SnackTypeItemWidget extends StatelessWidget {
   final SnackTypes? snackType;
   final bool? isSelected;
   final String? text;
+  final Function() onTap;
 
-  const SnackTypeItemWidget(
-      {Key? key, this.isSelected = false, this.text, required this.snackType})
-      : super(key: key);
+  const SnackTypeItemWidget({
+    Key? key,
+    this.isSelected = false,
+    this.text,
+    required this.onTap,
+    required this.snackType,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context
-          .read<HomeBloc>()
-          .add(SnackTypeSelectedEvent(snackType: snackType!)),
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color: isSelected! ? Colors.black : Colors.grey.shade200,
@@ -40,7 +43,7 @@ class SnackTypeItemWidget extends StatelessWidget {
                 AppUtils.kBoxWidth8,
                 Text(
                   text ?? "All",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 13,
                     color: Colors.white,
                     fontWeight: FontWeight.w500,

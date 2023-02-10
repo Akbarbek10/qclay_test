@@ -4,10 +4,10 @@ import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/features/home/presentation/pages/home/models/snack_item_model.dart';
 
-class CartItemWidget extends StatelessWidget {
+class HomeCartItemWidget extends StatelessWidget {
   final SnackItemModel? item;
 
-  const CartItemWidget({Key? key, this.item}) : super(key: key);
+  const HomeCartItemWidget({Key? key, this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,13 @@ class CartItemWidget extends StatelessWidget {
         padding: AppUtils.kPaddingAll16,
         width: 68.w,
         decoration: BoxDecoration(
-            border: Border.all(width: 2, color: ThemeColors.primaryColor),
-            color: ThemeColors.white,
-            shape: BoxShape.circle),
+          border: Border.all(
+            width: 2,
+            color: ThemeColors.primaryColor,
+          ),
+          color: ThemeColors.white,
+          shape: BoxShape.circle,
+        ),
         child: Center(
           child: Image.asset(
             item?.imageUrl ?? "",
