@@ -11,27 +11,31 @@ mixin HomeMixin {
         backgroundColor: ThemeColors.chocoSnackColorPink,
         type: "All",
         imageUrl: "assets/png/choco.png",
-        price: "0.8",
+        cartImgUrl: "assets/png/ice_cream_cart.png",
+        price: "0.9",
         name: "Good\nSource",
       ),
       SnackItemModel(
-        backgroundColor:  ThemeColors.chocoSnackColorPink,
+        backgroundColor: ThemeColors.chocoSnackColorPink,
         type: "Chocolate",
         imageUrl: "assets/png/choco.png",
         price: "0.8",
+        cartImgUrl: "assets/png/choco_cart.png",
         name: "Good\nSource",
       ),
       SnackItemModel(
-        backgroundColor:  ThemeColors.chipsSnackColorGreen,
+        backgroundColor: ThemeColors.chipsSnackColorGreen,
         type: "Chips",
         imageUrl: "assets/png/chips.png",
-        price: "0.3",
+        price: "0.5",
+        cartImgUrl: "assets/png/ice_cream_cart.png",
         name: "Smiths\nChips",
       ),
       SnackItemModel(
         type: "Sweet",
         imageUrl: "assets/png/chips.png",
         price: "0.7",
+        cartImgUrl: "assets/png/ice_cream_cart.png",
         name: "Smiths\nSweets",
       ),
     ];
@@ -40,20 +44,4 @@ mixin HomeMixin {
   _dispose() {
     _bloc.close();
   }
-}
-
-class SnackItemModel {
-  final String? type;
-  final String? imageUrl;
-  final String? price;
-  final String? name;
-  final Color? backgroundColor;
-
-  SnackItemModel({
-    this.type,
-    this.imageUrl,
-    this.price,
-    this.name,
-    this.backgroundColor,
-  });
 }

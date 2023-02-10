@@ -12,3 +12,14 @@ class SnackTypeSelectedEvent extends HomeEvent {
   @override
   List<Object?> get props => [snackType];
 }
+
+class AddSnackToCartEvent extends HomeEvent {
+  final SnackItemModel? snack;
+
+  const AddSnackToCartEvent({required this.snack});
+
+  @override
+  List<Object?> get props => [
+        snack,
+      ];
+}

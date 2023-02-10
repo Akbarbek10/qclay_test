@@ -63,6 +63,8 @@ class AppUtils {
   static const kPaddingAll8 = EdgeInsets.all(8);
   static const kPaddingAll10 = EdgeInsets.all(10);
   static const kPaddingAll12 = EdgeInsets.all(12);
+  static const kPaddingAll16 = EdgeInsets.all(16);
+  static const kPaddingRight48 = EdgeInsets.only(right: 48);
   static const kPaddingVer8Hor16 = EdgeInsets.symmetric(vertical: 8,horizontal: 16);
   static const kPaddingHor21Ver18 = EdgeInsets.symmetric(horizontal: 21,vertical: 18);
   static const kPaddingLeft44Top25Right55 =
