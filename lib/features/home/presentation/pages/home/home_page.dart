@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qclay_test/core/paints/custom_bottom_painter/custom_bottom_widget.dart';
 import 'package:qclay_test/core/theme/text/theme_text_styles.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
@@ -11,6 +12,7 @@ import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:qclay_test/features/home/presentation/pages/home/models/snack_item_model.dart';
 import 'package:qclay_test/features/home/presentation/pages/home/widgets/home_cart_item_widget.dart';
 import 'package:qclay_test/injector_container.dart';
+import 'package:qclay_test/router/name_routes.dart';
 import 'widgets/snack_card_item.dart';
 import 'widgets/snack_type_item_widget.dart';
 
@@ -192,20 +194,25 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                     SliverPadding(
                       padding: EdgeInsets.only(top: 32.h,right: 30.w,left: 30.w),
                       sliver: SliverToBoxAdapter(
-                        child: Stack(
-                            children: state.currentSnacksList.isNotEmpty
-                                ? state.currentSnacksList
-                                    .map(
-                                      (snack) => SnackCardItem(
-                                        bloc: _bloc,
-                                        state: state,
-                                        snack: snack,
-                                        isFont: state.currentSnacksList.last ==
-                                            snack,
-                                      ),
-                                    )
-                                    .toList()
-                                : []),
+                        child: GestureDetector(
+                          onTap: (){
+                            context.pushNamed(Routes.product);
+                          },
+                          child: Stack(
+                              children: state.currentSnacksList.isNotEmpty
+                                  ? state.currentSnacksList
+                                      .map(
+                                        (snack) => SnackCardItem(
+                                          bloc: _bloc,
+                                          state: state,
+                                          snack: snack,
+                                          isFont: state.currentSnacksList.last ==
+                                              snack,
+                                        ),
+                                      )
+                                      .toList()
+                                  : []),
+                        ),
                       ),
                     )
                   ],

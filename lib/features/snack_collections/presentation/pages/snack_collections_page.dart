@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qclay_test/core/paints/custom_bottom_painter/custom_bottom_widget.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/theme/text/theme_text_styles.dart';
@@ -14,6 +15,7 @@ import 'package:qclay_test/features/home/presentation/pages/home/widgets/snack_t
 import 'package:qclay_test/features/snack_collections/presentation/bloc/snack_collections_bloc.dart';
 import 'package:qclay_test/features/snack_collections/presentation/pages/widgets/snack_card_collection_item.dart';
 import 'package:qclay_test/injector_container.dart';
+import 'package:qclay_test/router/name_routes.dart';
 
 import 'widgets/custom_filter_widget.dart';
 
@@ -134,81 +136,86 @@ class SnackCollectionsPageBody extends StatelessWidget {
             ),
             Positioned(
               bottom: 0,
-              child: Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Positioned(
-                    child: CustomPaint(
-                      size: Size(size.width, 124.h),
-                      painter: BottomWidgetCustomPainter(),
-                      child: SizedBox(
-                        width: size.width,
-                        height: 124.h,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: 49.w,
-                            ),
-                            Container(
-                              padding: AppUtils.kPaddingAll16,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: ThemeColors.secondaryColor,
+              child: GestureDetector(
+                onTap: (){
+                  context.pushNamed(Routes.home);
+                },
+                child: Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    Positioned(
+                      child: CustomPaint(
+                        size: Size(size.width, 124.h),
+                        painter: BottomWidgetCustomPainter(),
+                        child: SizedBox(
+                          width: size.width,
+                          height: 124.h,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 49.w,
                               ),
-                              child: const Center(
-                                child: Text(
-                                  "1",
-                                  style: TextStyle(
-                                      color: ThemeColors.black, fontSize: 18),
+                              Container(
+                                padding: AppUtils.kPaddingAll16,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: ThemeColors.secondaryColor,
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    "1",
+                                    style: TextStyle(
+                                        color: ThemeColors.black, fontSize: 18),
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 28.w,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children:  [
-                                Text(
-                                  "Cart",
-                                  style: ThemeTextStyles.whiteExtraBold22,
-                                ),
-                                Text(
-                                  "1 item",
-                                  style: ThemeTextStyles.whiteRegular19.copyWith(
-                                    color: ThemeColors.white.withOpacity(0.4),
+                              SizedBox(
+                                width: 28.w,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children:  [
+                                  Text(
+                                    "Cart",
+                                    style: ThemeTextStyles.whiteExtraBold22,
                                   ),
-                                )
-                              ],
-                            ),
-                            AppUtils.kSpacer,
-                            ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 3,
-                              itemBuilder: (BuildContext context, int index) {
-                                return HomeCartItemWidget(
-                                  item: SnackItemModel(
-                                    type: "Sweet",
-                                    imageUrl: "assets/png/chips.png",
-                                    price: "0.7",
-                                    cartImgUrl: "assets/png/ice_cream_cart.png",
-                                    name: "Smiths\nSweets",
-                                  ),
-                                );
-                              },
-                            ),
-                            AppUtils.kSpacer,
-                          ],
+                                  Text(
+                                    "1 item",
+                                    style: ThemeTextStyles.whiteRegular19.copyWith(
+                                      color: ThemeColors.white.withOpacity(0.4),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              AppUtils.kSpacer,
+                              ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: 3,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return HomeCartItemWidget(
+                                    item: SnackItemModel(
+                                      type: "Sweet",
+                                      imageUrl: "assets/png/chips.png",
+                                      price: "0.7",
+                                      cartImgUrl: "assets/png/ice_cream_cart.png",
+                                      name: "Smiths\nSweets",
+                                    ),
+                                  );
+                                },
+                              ),
+                              AppUtils.kSpacer,
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const BottomSheetLineWidget(),
-                ],
+                    const BottomSheetLineWidget(),
+                  ],
+                ),
               ),
             ),
           ],

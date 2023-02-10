@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qclay_test/core/paints/add_remove_button_painter/add_remove_button_widget.dart';
 import 'package:qclay_test/core/theme/icons/app_icons.dart';
 import 'package:qclay_test/core/theme/text/theme_text_styles.dart';
@@ -12,6 +13,7 @@ import 'package:qclay_test/core/widgets/back_button/back_button.dart';
 import 'package:qclay_test/core/widgets/buttons/bottom_action_widget.dart';
 import 'package:qclay_test/features/home/presentation/bloc/product/product_bloc.dart';
 import 'package:qclay_test/injector_container.dart';
+import 'package:qclay_test/router/name_routes.dart';
 
 part 'package:qclay_test/features/home/presentation/pages/product/mixins/product_mixin.dart';
 
@@ -97,7 +99,9 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                               ),
                               AppUtils.kBoxWidth8,
                               BackButtonWidget(
-                                onTap: () {},
+                                onTap: () {
+                                  context.pop();
+                                },
                                 assetPath: "assets/svg/ic_ios_arrow.svg",
                               ),
                             ],
@@ -257,7 +261,9 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                     child: BottomActionWidget(
                       assetPath: "assets/svg/ic_bag.svg",
                       text: "Add to Cart",
-                      onTap: (){},
+                      onTap: (){
+                        context.pushNamed(Routes.cart);
+                      },
                     ),
                   )
                 ],
