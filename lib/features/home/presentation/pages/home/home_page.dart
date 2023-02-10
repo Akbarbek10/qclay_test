@@ -67,6 +67,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
     return BlocConsumer<HomeBloc, HomeState>(
       listener: (_, state) {},
       builder: (_, state) {
+        debugPrint("LELELELLELE ${state.snacksList.length}");
         return Scaffold(
           backgroundColor: ThemeColors.white,
           body: Stack(
@@ -89,7 +90,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 ),
                               ),
                               BackButtonWidget(
-                                onTap: (){},
+                                onTap: () {},
                                 assetPath: "assets/svg/ic_ios_arrow.svg",
                               ),
                             ],
@@ -159,17 +160,23 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                       padding: AppUtils.kPaddingHor30Top32,
                       sliver: SliverToBoxAdapter(
                         child: Stack(
-                            children: state
-                                .snacksList[state.selectedSnackTypeItem.index]
-                                .map(
-                                  (snack) => SnackCardItem(
-                                    bloc: _bloc,
-                                    state: state,
-                                    snack: snack,
-                                    isFont: state.snacksList[state.selectedSnackTypeItem.index].last == snack,
-                                  ),
-                                )
-                                .toList()),
+                            children: state.snacksList.isNotEmpty
+                                ? state.snacksList[state.selectedSnackTypeItem.index]
+                                    .map(
+                                      (snack) => SnackCardItem(
+                                        bloc: _bloc,
+                                        state: state,
+                                        snack: snack,
+                                        isFont: state
+                                                .snacksList[state
+                                                    .selectedSnackTypeItem
+                                                    .index]
+                                                .last ==
+                                            snack,
+                                      ),
+                                    )
+                                    .toList()
+                                : []),
                       ),
                     )
                   ],

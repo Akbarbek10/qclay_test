@@ -107,9 +107,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   _onInitSnacksList(InitSnacksListEvent event, Emitter<HomeState> emit) {
+    debugPrint("ASDDSDSAD ${event.snacksList.length}");
     emit(
       state.copyWith(
-        snacksList: [...event.snacksList],
+        snacksList: event.snacksList,
       ),
     );
   }

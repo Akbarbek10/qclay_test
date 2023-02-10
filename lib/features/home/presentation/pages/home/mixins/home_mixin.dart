@@ -10,9 +10,7 @@ mixin HomeMixin {
 
   void _initState(BuildContext context) {
     _bloc = context.read<HomeBloc>();
-
     _initLists();
-
   }
 
   void _initLists(){
