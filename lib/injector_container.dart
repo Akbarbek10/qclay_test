@@ -12,9 +12,7 @@ const box = 'qclay_test';
 
 Future<void> init() async {
   // await initHive();
-  sl.registerLazySingleton(
-    () => Dio()..interceptors.addAll([]),
-  );
+
   sl.registerSingleton<AppBloc>(AppBloc());
   // Features
   _homeFeature();
