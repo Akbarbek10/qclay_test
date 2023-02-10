@@ -90,7 +90,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                               ),
                               BackButtonWidget(
                                 onTap: () {},
-                                assetPath: "assets/svg/ic_ios_arrow.svg",
+                                assetPath: "assets/svg/ic_menu.svg",
                               ),
                             ],
                           ),
@@ -122,6 +122,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                     SnackTypes.all,
                               ),
                               SnackTypeItemWidget(
+                                assetPath: "assets/svg/ic_choco.svg",
                                 onTap: () {
                                   context.read<HomeBloc>().add(
                                         const SnackTypeSelectedEvent(
@@ -139,6 +140,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                     SnackTypes.choco,
                               ),
                               SnackTypeItemWidget(
+                                assetPath: "assets/svg/ic_chips.svg",
                                 onTap: () {
                                   context.read<HomeBloc>().add(
                                         const SnackTypeSelectedEvent(
@@ -156,6 +158,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                     SnackTypes.chips,
                               ),
                               SnackTypeItemWidget(
+                                assetPath: "assets/svg/ic_candy.svg",
                                 onTap: () {
                                   context.read<HomeBloc>().add(
                                         const SnackTypeSelectedEvent(
