@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qclay_test/core/paints/custom_bottom_painter/custom_bottom_widget.dart';
+import 'package:qclay_test/core/theme/text/theme_text_styles.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/widgets/back_button/back_button.dart';
@@ -82,12 +83,20 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Expanded(
-                                child: Text(
-                                  "Order from the\nbest of snacks",
-                                  style: TextStyle(fontSize: 30),
-                                ),
-                              ),
+                              Expanded(
+                                  child: RichText(
+                                text: TextSpan(children: [
+                                  TextSpan(
+                                      text: "Order From The ",
+                                      style: ThemeTextStyles.black30Weight400),
+                                  TextSpan(
+                                      text: "Best Of ",
+                                      style: ThemeTextStyles.black30Weight400),
+                                  TextSpan(
+                                      text: "Snacks",
+                                      style: ThemeTextStyles.black30Weight700),
+                                ]),
+                              )),
                               BackButtonWidget(
                                 onTap: () {},
                                 assetPath: "assets/svg/ic_menu.svg",
@@ -108,15 +117,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 hasIcon: false,
                                 onTap: () {
                                   context.read<HomeBloc>().add(
-                                    const SnackTypeSelectedEvent(
-                                      snackType: SnackTypes.all,
-                                    ),
-                                  );
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.all,
+                                        ),
+                                      );
                                   context.read<HomeBloc>().add(
-                                    SetSnacksListEvent(
-                                      currentSnacksList: _allList,
-                                    ),
-                                  );
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _allList,
+                                        ),
+                                      );
                                 },
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.all,
@@ -125,15 +134,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 assetPath: "assets/svg/ic_choco.svg",
                                 onTap: () {
                                   context.read<HomeBloc>().add(
-                                    const SnackTypeSelectedEvent(
-                                      snackType: SnackTypes.choco,
-                                    ),
-                                  );
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.choco,
+                                        ),
+                                      );
                                   context.read<HomeBloc>().add(
-                                    SetSnacksListEvent(
-                                      currentSnacksList: _chocoList,
-                                    ),
-                                  );
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _chocoList,
+                                        ),
+                                      );
                                 },
                                 text: "Choco",
                                 isSelected: state.selectedSnackTypeItem ==
@@ -143,15 +152,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 assetPath: "assets/svg/ic_chips.svg",
                                 onTap: () {
                                   context.read<HomeBloc>().add(
-                                    const SnackTypeSelectedEvent(
-                                      snackType: SnackTypes.chips,
-                                    ),
-                                  );
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.chips,
+                                        ),
+                                      );
                                   context.read<HomeBloc>().add(
-                                    SetSnacksListEvent(
-                                      currentSnacksList: _chipsList,
-                                    ),
-                                  );
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _chipsList,
+                                        ),
+                                      );
                                 },
                                 text: "Chips",
                                 isSelected: state.selectedSnackTypeItem ==
@@ -161,15 +170,15 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 assetPath: "assets/svg/ic_candy.svg",
                                 onTap: () {
                                   context.read<HomeBloc>().add(
-                                    const SnackTypeSelectedEvent(
-                                      snackType: SnackTypes.sweets,
-                                    ),
-                                  );
+                                        const SnackTypeSelectedEvent(
+                                          snackType: SnackTypes.sweets,
+                                        ),
+                                      );
                                   context.read<HomeBloc>().add(
-                                    SetSnacksListEvent(
-                                      currentSnacksList: _sweetsList,
-                                    ),
-                                  );
+                                        SetSnacksListEvent(
+                                          currentSnacksList: _sweetsList,
+                                        ),
+                                      );
                                 },
                                 text: "Sweets",
                                 isSelected: state.selectedSnackTypeItem ==
@@ -186,16 +195,19 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
+                          children: [
                             Expanded(
-                              child: Text(
-                                "Choco Collections",
-                                style: TextStyle(
-                                  fontSize: 25,
-                                ),
-                              ),
-                            ),
-                            Icon(
+                                child: RichText(
+                              text: TextSpan(children: [
+                                TextSpan(
+                                    text: "Choco ",
+                                    style: ThemeTextStyles.black25Weight400),
+                                TextSpan(
+                                    text: "Collections",
+                                    style: ThemeTextStyles.black25Weight700),
+                              ]),
+                            )),
+                            const Icon(
                               Icons.arrow_right_alt_sharp,
                               size: 32,
                             )
@@ -209,16 +221,16 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                         child: Stack(
                             children: state.currentSnacksList.isNotEmpty
                                 ? state.currentSnacksList
-                                .map(
-                                  (snack) => SnackCardItem(
-                                bloc: _bloc,
-                                state: state,
-                                snack: snack,
-                                isFont: state.currentSnacksList.last ==
-                                    snack,
-                              ),
-                            )
-                                .toList()
+                                    .map(
+                                      (snack) => SnackCardItem(
+                                        bloc: _bloc,
+                                        state: state,
+                                        snack: snack,
+                                        isFont: state.currentSnacksList.last ==
+                                            snack,
+                                      ),
+                                    )
+                                    .toList()
                                 : []),
                       ),
                     )
