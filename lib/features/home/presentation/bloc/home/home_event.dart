@@ -27,3 +27,49 @@ class AddSnackToCartEvent extends HomeEvent {
         snack,
       ];
 }
+
+class StartPositionEvent extends HomeEvent {
+  final DragStartDetails details;
+
+  const StartPositionEvent({required this.details});
+
+  @override
+  List<Object?> get props => [details];
+}
+
+class UpdatePositionEvent extends HomeEvent {
+  final DragUpdateDetails details;
+
+  const UpdatePositionEvent({required this.details});
+
+  @override
+  List<Object?> get props => [details];
+}
+
+class EndPositionEvent extends HomeEvent {
+
+  const EndPositionEvent();
+
+  @override
+  List<Object?> get props => [];
+}
+
+class SetSizeEvent extends HomeEvent {
+  final Size size;
+
+  const SetSizeEvent({required this.size});
+
+  @override
+  List<Object?> get props => [size];
+}
+
+class InitSnacksListEvent extends HomeEvent {
+  final List<List<SnackItemModel>> snacksList;
+
+  const InitSnacksListEvent({required this.snacksList});
+
+  @override
+  List<Object?> get props => [
+        snacksList,
+      ];
+}
