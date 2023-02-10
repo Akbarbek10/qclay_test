@@ -3,9 +3,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
+import 'package:qclay_test/features/home/presentation/pages/home/home_page.dart';
 
 class SnackCardItem extends StatelessWidget {
-  const SnackCardItem({Key? key}) : super(key: key);
+  final SnackItemModel? snack;
+
+  const SnackCardItem({Key? key, this.snack}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +17,14 @@ class SnackCardItem extends StatelessWidget {
       child: Container(
         width: 336,
         height: 422,
-        color: ThemeColors.chocoSnackColor,
+        color: snack?.backgroundColor,
         child: Stack(
           children: [
             Positioned(
+              top: 10,
               left: 15,
               child: Image.asset(
-                "assets/png/choco.png",
-                width: 320,
+                snack?.imageUrl ?? "",
               ),
             ),
             Align(
@@ -46,7 +49,7 @@ class SnackCardItem extends StatelessWidget {
                           borderRadius: AppUtils.kBorderRadius30,
                           color: ThemeColors.white),
                       child: Text(
-                        "Chocolates",
+                        snack?.type ?? "",
                         style: TextStyle(
                           color: Colors.grey.shade600,
                           fontWeight: FontWeight.w400,
@@ -74,9 +77,9 @@ class SnackCardItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           AppUtils.kBoxWidth40,
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              "\$08.00",
+                              "\$${snack?.price}",
                               style: TextStyle(
                                   color: ThemeColors.black,
                                   fontSize: 19,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:qclay_test/injector_container.dart';
@@ -149,7 +150,9 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                 SliverPadding(
                   padding: AppUtils.kPaddingHor30Top32,
                   sliver: SliverToBoxAdapter(
-                    child: SnackCardItem(),
+                    child: SnackCardItem(
+                      snack: _snack[state.selectedSnackTypeItem.index],
+                    ),
                   ),
                 )
               ],
