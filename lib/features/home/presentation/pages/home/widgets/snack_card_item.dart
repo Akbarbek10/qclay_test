@@ -46,8 +46,9 @@ class SnackCardItem extends StatelessWidget {
                     Container(
                       padding: AppUtils.kPaddingVer8Hor16,
                       decoration: const BoxDecoration(
-                          borderRadius: AppUtils.kBorderRadius30,
-                          color: ThemeColors.white),
+                        borderRadius: AppUtils.kBorderRadius30,
+                        color: ThemeColors.white,
+                      ),
                       child: Text(
                         snack?.type ?? "",
                         style: TextStyle(
@@ -68,10 +69,18 @@ class SnackCardItem extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: AppUtils.kBorderRadius38,
                   child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaY: 8, sigmaX: 8),
+                    filter: ImageFilter.blur(
+                      sigmaY: 8,
+                      sigmaX: 8,
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: ThemeColors.white.withOpacity(0.35)),
+                        color: ThemeColors.white.withOpacity(0.35),
+                        border: Border.all(
+                          width: 1,
+                          color:ThemeColors.whiteF8,
+                        ),
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,10 +89,11 @@ class SnackCardItem extends StatelessWidget {
                           Expanded(
                             child: Text(
                               "\$${snack?.price}",
-                              style: TextStyle(
-                                  color: ThemeColors.black,
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.w700),
+                              style: const TextStyle(
+                                color: ThemeColors.black,
+                                fontSize: 19,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
                           ),
                           Container(
@@ -95,10 +105,11 @@ class SnackCardItem extends StatelessWidget {
                             width: 86,
                             height: 65,
                             child: const Center(
-                                child: Icon(
-                              Icons.shopping_basket_outlined,
-                              color: ThemeColors.white,
-                            )),
+                              child: Icon(
+                                Icons.shopping_basket_outlined,
+                                color: ThemeColors.white,
+                              ),
+                            ),
                           ),
                         ],
                       ),

@@ -7,8 +7,12 @@ abstract class HomeEvent extends Equatable {
 class SnackTypeSelectedEvent extends HomeEvent {
   final SnackTypes snackType;
 
-  const SnackTypeSelectedEvent({required this.snackType});
+  const SnackTypeSelectedEvent({
+    required this.snackType,
+  });
 
   @override
-  List<Object?> get props => [snackType];
+  List<Object?> get props => [
+        snackType,
+      ];
 }

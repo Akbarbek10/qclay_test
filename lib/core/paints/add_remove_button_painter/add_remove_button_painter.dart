@@ -40,7 +40,7 @@ class AddRemoveBtnCustomPainter extends CustomPainter {
       Offset(size.width * 0.2375607, size.height * 0.5592417),
       [
         Colors.white,
-        const Color(0xFFF0F0F0),
+         Color(0xFFF6F6F6),
       ],
       [0, 1],
     );

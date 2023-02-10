@@ -37,6 +37,7 @@ class AppUtils {
   static const kBoxHeight30 = SizedBox(height: 30);
   static const kBoxHeight40 = SizedBox(height: 40);
   static const kBoxHeight50 = SizedBox(height: 40);
+  static const kBoxHeight54 = SizedBox(height: 54);
 
   static const kBoxWidth2 = SizedBox(width: 2);
   static const kBoxWidth4 = SizedBox(width: 4);
@@ -57,20 +58,25 @@ class AppUtils {
   /// padding
   static const kPaddingAll2 = EdgeInsets.all(2);
   static const kPaddingAll30 = EdgeInsets.all(30);
-  static const kPaddingHor30Top32 = EdgeInsets.only(left: 44,right: 44,top: 32);
+  static const kPaddingHor30Top32 =
+      EdgeInsets.only(left: 44, right: 44, top: 32);
   static const kPaddingAll4 = EdgeInsets.all(4);
   static const kPaddingAll6 = EdgeInsets.all(6);
   static const kPaddingAll8 = EdgeInsets.all(8);
   static const kPaddingAll10 = EdgeInsets.all(10);
   static const kPaddingAll12 = EdgeInsets.all(12);
-  static const kPaddingVer8Hor16 = EdgeInsets.symmetric(vertical: 8,horizontal: 16);
-  static const kPaddingHor21Ver18 = EdgeInsets.symmetric(horizontal: 21,vertical: 18);
+  static const kPaddingVer8Hor16 =
+      EdgeInsets.symmetric(vertical: 8, horizontal: 16);
+  static const kPaddingHor21Ver18 =
+      EdgeInsets.symmetric(horizontal: 21, vertical: 18);
+  static const kPaddingHor38 = EdgeInsets.symmetric(horizontal: 38);
   static const kPaddingLeft44Top25Right55 =
       EdgeInsets.only(left: 44, top: 25, right: 55);
   static const kPaddingLeft44Right38 = EdgeInsets.only(left: 44, right: 38);
   static const kPaddingLeft33Top44 = EdgeInsets.only(top: 44, left: 33);
   static const kPaddingLeft38Right19Top25 =
       EdgeInsets.only(left: 38, right: 19, top: 25);
+  static const kPaddingBottom24 = EdgeInsets.only(bottom: 24);
 
   /// border radius
   static const kRadius = Radius.zero;
@@ -84,11 +90,14 @@ class AppUtils {
   static const kBorderRadius2 = BorderRadius.all(Radius.circular(2));
   static const kBorderRadius4 = BorderRadius.all(Radius.circular(4));
   static const kBorderRadius6 = BorderRadius.all(Radius.circular(6));
-  static const kBorderRadius38 = BorderRadius.all(Radius.circular(38));
   static const kBorderRadius8 = BorderRadius.all(Radius.circular(8));
   static const kBorderRadius10 = BorderRadius.all(Radius.circular(10));
   static const kBorderRadius12 = BorderRadius.all(Radius.circular(12));
+  static const kBorderRadius22 = BorderRadius.all(Radius.circular(22));
   static const kBorderRadius24 = BorderRadius.all(Radius.circular(24));
-  static const kBorderRadius32 = BorderRadius.all(Radius.circular(32));
   static const kBorderRadius30 = BorderRadius.all(Radius.circular(30));
+  static const kBorderRadius32 = BorderRadius.all(Radius.circular(32));
+  static const kBorderRadius38 = BorderRadius.all(Radius.circular(38));
+  static const kBorderRadius44 = BorderRadius.all(Radius.circular(44));
+  static const kBorderRadius54 = BorderRadius.all(Radius.circular(54));
 }

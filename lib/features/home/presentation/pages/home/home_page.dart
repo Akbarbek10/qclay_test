@@ -7,6 +7,7 @@ import 'package:qclay_test/core/paints/custom_bottom_widget/custom_bottom_widget
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
+import 'package:qclay_test/core/widgets/back_button/back_button.dart';
 import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:qclay_test/injector_container.dart';
 import 'dart:math' as math;
@@ -81,22 +82,10 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                   style: TextStyle(fontSize: 30),
                                 ),
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.grey.shade300,
-                                    width:
-                                    5, //                   <--- border width here
-                                  ),
-                                  color: Colors.white,
-                                  borderRadius: AppUtils.kBorderRadius38,
-                                ),
-                                width: 69,
-                                height: 95,
-                                child: const Center(
-                                  child: Icon(Icons.legend_toggle),
-                                ),
-                              )
+                              BackButtonWidget(
+                                onTap: (){},
+                                iconData: Icons.add,
+                              ),
                             ],
                           ),
                         ),
