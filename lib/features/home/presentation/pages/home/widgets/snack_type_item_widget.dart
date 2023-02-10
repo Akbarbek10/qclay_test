@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
-import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
 
 class SnackTypeItemWidget extends StatelessWidget {
-  final SnackTypes? snackType;
   final bool? isSelected;
   final String? text;
-  final Function() onTap;
+  final String? assetPath;
+  final Function()? onTap;
+  final bool? hasIcon;
+
+  const SnackTypeItemWidget(
+      {Key? key,
+      this.isSelected = false,
+      this.text,
+      this.assetPath,
+      this.onTap,
+      this.hasIcon = true})
+      : super(key: key);
 
   const SnackTypeItemWidget({
     Key? key,
     this.isSelected = false,
     this.text,
     required this.onTap,
-    required this.snackType,
+    this.assetPath,
+    this.hasIcon,
   }) : super(key: key);
 
   @override
@@ -34,13 +45,19 @@ class SnackTypeItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AppUtils.kBoxWidth24,
-              Icon(
-                Icons.no_food_outlined,
-                color: isSelected! ? Colors.amber : Colors.black,
-                size: 18,
-              ),
-              if (isSelected!) ...[
-                AppUtils.kBoxWidth8,
+              if (hasIcon!)
+                SizedBox(
+                  width: 18,
+                  height: 18,
+                  child: SvgPicture.asset(
+                    assetPath ?? "",
+                    color: isSelected!
+                        ? ThemeColors.secondaryColor
+                        : ThemeColors.black,
+                  ),
+                ),
+              if (isSelected! || !hasIcon!) ...[
+                if (hasIcon!) AppUtils.kBoxWidth8,
                 Text(
                   text ?? "All",
                   style: const TextStyle(

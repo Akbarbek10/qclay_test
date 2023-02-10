@@ -2,7 +2,6 @@ part of 'package:qclay_test/features/home/presentation/pages/home/home_page.dart
 
 mixin HomeMixin {
   late HomeBloc _bloc;
-  late List<List<SnackItemModel>> _snacksList;
   late List<SnackItemModel> _allList;
   late List<SnackItemModel> _chipsList;
   late List<SnackItemModel> _chocoList;
@@ -13,7 +12,7 @@ mixin HomeMixin {
     _initLists();
   }
 
-  void _initLists(){
+  void _initLists() {
     _allList = [
       SnackItemModel(
         backgroundColor: ThemeColors.chocoSnackColorPink,
@@ -84,17 +83,8 @@ mixin HomeMixin {
         name: "Smiths\nSweets",
       ),
     ];
-    _snacksList = [
-      [..._allList],
-      [..._chipsList],
-      [..._chocoList],
-      [..._sweetsList],
-    ];
-
-    _bloc.add(InitSnacksListEvent(snacksList: _snacksList));
-
+    _bloc.add(SetSnacksListEvent(currentSnacksList: _chocoList));
   }
-
 
   _dispose() {
     _bloc.close();

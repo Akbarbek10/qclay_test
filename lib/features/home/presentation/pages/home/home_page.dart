@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qclay_test/core/paints/custom_bottom_painter/custom_bottom_widget.dart';
-import 'package:qclay_test/core/theme/icons/app_icons.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/widgets/back_button/back_button.dart';
 import 'package:qclay_test/core/widgets/lines/bottom_sheet_line_widget.dart';
 import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:qclay_test/features/home/presentation/pages/home/models/snack_item_model.dart';
-import 'package:qclay_test/features/home/presentation/pages/home/widgets/home_cart_item_widget.dart';
 import 'package:qclay_test/injector_container.dart';
+import 'widgets/cart_item_widget.dart';
 import 'widgets/snack_card_item.dart';
 import 'widgets/snack_type_item_widget.dart';
 
@@ -41,6 +40,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
     super.initState();
     if (!mounted) return;
     _initState(context);
+
     WidgetsBinding.instance.addPersistentFrameCallback((timeStamp) {
       final size = MediaQuery.of(context).size;
       _bloc.add(SetSizeEvent(size: size));
@@ -67,7 +67,6 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
     return BlocConsumer<HomeBloc, HomeState>(
       listener: (_, state) {},
       builder: (_, state) {
-        debugPrint("LELELELLELE ${state.snacksList.length}");
         return Scaffold(
           backgroundColor: ThemeColors.white,
           body: Stack(
@@ -91,7 +90,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                               ),
                               BackButtonWidget(
                                 onTap: () {},
-                                assetPath: "assets/svg/ic_ios_arrow.svg",
+                                assetPath: "assets/svg/ic_menu.svg",
                               ),
                             ],
                           ),
@@ -106,39 +105,75 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SnackTypeItemWidget(
-                                snackType: SnackTypes.all,
+                                hasIcon: false,
+                                onTap: () {
+                                  context.read<HomeBloc>().add(
+                                    const SnackTypeSelectedEvent(
+                                      snackType: SnackTypes.all,
+                                    ),
+                                  );
+                                  context.read<HomeBloc>().add(
+                                    SetSnacksListEvent(
+                                      currentSnacksList: _allList,
+                                    ),
+                                  );
+                                },
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.all,
-                                onTap: (){
-                                  _bloc.add(const SnackTypeSelectedEvent(snackType: SnackTypes.all,));
-                                },
                               ),
                               SnackTypeItemWidget(
+                                assetPath: "assets/svg/ic_choco.svg",
+                                onTap: () {
+                                  context.read<HomeBloc>().add(
+                                    const SnackTypeSelectedEvent(
+                                      snackType: SnackTypes.choco,
+                                    ),
+                                  );
+                                  context.read<HomeBloc>().add(
+                                    SetSnacksListEvent(
+                                      currentSnacksList: _chocoList,
+                                    ),
+                                  );
+                                },
                                 text: "Choco",
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.choco,
-                                snackType: SnackTypes.choco,
-                                onTap: (){
-                                  _bloc.add(const SnackTypeSelectedEvent(snackType: SnackTypes.choco,));
-                                },
                               ),
                               SnackTypeItemWidget(
+                                assetPath: "assets/svg/ic_chips.svg",
+                                onTap: () {
+                                  context.read<HomeBloc>().add(
+                                    const SnackTypeSelectedEvent(
+                                      snackType: SnackTypes.chips,
+                                    ),
+                                  );
+                                  context.read<HomeBloc>().add(
+                                    SetSnacksListEvent(
+                                      currentSnacksList: _chipsList,
+                                    ),
+                                  );
+                                },
                                 text: "Chips",
                                 isSelected: state.selectedSnackTypeItem ==
                                     SnackTypes.chips,
-                                snackType: SnackTypes.chips,
-                                onTap: (){
-                                  _bloc.add(const SnackTypeSelectedEvent(snackType: SnackTypes.chips,));
-                                },
                               ),
                               SnackTypeItemWidget(
-                                snackType: SnackTypes.sweets,
+                                assetPath: "assets/svg/ic_candy.svg",
+                                onTap: () {
+                                  context.read<HomeBloc>().add(
+                                    const SnackTypeSelectedEvent(
+                                      snackType: SnackTypes.sweets,
+                                    ),
+                                  );
+                                  context.read<HomeBloc>().add(
+                                    SetSnacksListEvent(
+                                      currentSnacksList: _sweetsList,
+                                    ),
+                                  );
+                                },
                                 text: "Sweets",
                                 isSelected: state.selectedSnackTypeItem ==
-                                    SnackTypes.sweets,
-                                onTap: (){
-                                  _bloc.add(const SnackTypeSelectedEvent(snackType: SnackTypes.chips,));
-                                },
+                                    SnackTypes.sweets, snackType: null,
                               ),
                             ],
                           ),
@@ -172,22 +207,18 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                       padding: AppUtils.kPaddingHor30Top32,
                       sliver: SliverToBoxAdapter(
                         child: Stack(
-                            children: state.snacksList.isNotEmpty
-                                ? state.snacksList[state.selectedSnackTypeItem.index]
-                                    .map(
-                                      (snack) => SnackCardItem(
-                                        bloc: _bloc,
-                                        state: state,
-                                        snack: snack,
-                                        isFont: state
-                                                .snacksList[state
-                                                    .selectedSnackTypeItem
-                                                    .index]
-                                                .last ==
-                                            snack,
-                                      ),
-                                    )
-                                    .toList()
+                            children: state.currentSnacksList.isNotEmpty
+                                ? state.currentSnacksList
+                                .map(
+                                  (snack) => SnackCardItem(
+                                bloc: _bloc,
+                                state: state,
+                                snack: snack,
+                                isFont: state.currentSnacksList.last ==
+                                    snack,
+                              ),
+                            )
+                                .toList()
                                 : []),
                       ),
                     )

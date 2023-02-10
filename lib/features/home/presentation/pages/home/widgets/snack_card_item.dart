@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/features/home/presentation/bloc/home/home_bloc.dart';
@@ -114,9 +115,9 @@ class _SnackCardItemState extends State<SnackCardItem> {
                               ),
                               width: 86.w,
                               height: 65.h,
-                              child: const Center(
-                                child: Icon(
-                                  Icons.shopping_basket_outlined,
+                              child: Center(
+                                child: SvgPicture.asset(
+                                  "assets/svg/ic_bag.svg",
                                   color: ThemeColors.white,
                                 ),
                               ),
@@ -141,9 +142,8 @@ class _SnackCardItemState extends State<SnackCardItem> {
           widget.bloc.add(UpdatePositionEvent(details: details));
         },
         onPanEnd: (details) {
-          widget.bloc.add(EndPositionEvent());
+          widget.bloc.add(const EndPositionEvent());
         },
-        onTap: () => widget.bloc.add(AddSnackToCartEvent(snack: widget.snack)),
         child: LayoutBuilder(
           builder: (context, constraints) {
             final center = constraints.smallest.center(Offset.zero);
@@ -247,9 +247,9 @@ class _SnackCardItemState extends State<SnackCardItem> {
                                       ),
                                       width: 86.w,
                                       height: 65.h,
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.shopping_basket_outlined,
+                                      child: Center(
+                                        child: SvgPicture.asset(
+                                          "assets/svg/ic_bag.svg",
                                           color: ThemeColors.white,
                                         ),
                                       ),
