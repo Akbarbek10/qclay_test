@@ -50,7 +50,7 @@ class _SnackCardItemState extends State<SnackCardItem> {
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
-                  padding: AppUtils.kPaddingLeft33Top44,
+                  padding: EdgeInsets.only(left: 34.w, top: 44.h),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -183,15 +183,15 @@ class _SnackCardItemState extends State<SnackCardItem> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
-                          padding: AppUtils.kPaddingLeft33Top44,
+                          padding: EdgeInsets.only(left: 34.w, top: 44.h),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
+                              Text(
                                 "Good\nSource",
                                 style: TextStyle(
                                   height: 1,
-                                  fontSize: 36,
+                                  fontSize: 36.sp,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
@@ -206,7 +206,7 @@ class _SnackCardItemState extends State<SnackCardItem> {
                                   style: TextStyle(
                                     color: Colors.grey.shade600,
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 14,
+                                    fontSize: 14.sp,
                                   ),
                                 ),
                               ),
@@ -233,9 +233,9 @@ class _SnackCardItemState extends State<SnackCardItem> {
                                     Expanded(
                                       child: Text(
                                         "\$${widget.snack?.price}",
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                             color: ThemeColors.black,
-                                            fontSize: 19,
+                                            fontSize: 19.sp,
                                             fontWeight: FontWeight.w700),
                                       ),
                                     ),

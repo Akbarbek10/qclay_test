@@ -35,11 +35,11 @@ class SnackTypeItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppUtils.kBoxWidth24,
+              SizedBox(width: 24.w,),
               if (hasIcon!)
                 SizedBox(
-                  width: 18,
-                  height: 18,
+                  width: 18.w,
+                  height: 18.h,
                   child: SvgPicture.asset(
                     assetPath ?? "",
                     color: isSelected!
@@ -48,17 +48,17 @@ class SnackTypeItemWidget extends StatelessWidget {
                   ),
                 ),
               if (isSelected! || !hasIcon!) ...[
-                if (hasIcon!) AppUtils.kBoxWidth8,
+                if (hasIcon!)  SizedBox(width: 8.w,),
                 Text(
                   text ?? "All",
-                  style: const TextStyle(
-                    fontSize: 13,
+                  style:  TextStyle(
+                    fontSize: 13.sp,
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
-              AppUtils.kBoxWidth24,
+              SizedBox(width: 24.w,)
             ],
           ),
         ),
