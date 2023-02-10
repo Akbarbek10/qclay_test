@@ -174,6 +174,7 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
                             ),
                           ],
                         ),
+                        SizedBox(height: 24.h),
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
