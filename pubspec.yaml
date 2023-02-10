@@ -72,7 +72,11 @@ flutter:
   assets:
     - assets/
     - assets/png/
+    - assets/svg/
   fonts:
+#    - family: AppIcons
+#      fonts:
+#        - asset: assets/fonts/AppIcons.ttf
     - family: Plus-Jakarta-Sans
       fonts:
         - asset: assets/fonts/PlusJakartaSans-ExtraBold.ttf

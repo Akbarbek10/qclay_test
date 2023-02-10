@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/theme/text/theme_text_styles.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
@@ -7,13 +8,13 @@ import 'package:qclay_test/core/utils/app_utils.dart';
 class BottomActionWidget extends StatelessWidget {
   final String text;
   final Function()? onTap;
-  final IconData iconData;
+  final String assetPath;
 
   const BottomActionWidget({
     Key? key,
     required this.text,
     this.onTap,
-    required this.iconData,
+    required this.assetPath,
   }) : super(key: key);
 
   @override
@@ -44,9 +45,14 @@ class BottomActionWidget extends StatelessWidget {
                   color: ThemeColors.secondaryColor,
                   borderRadius: AppUtils.kBorderRadius54,
                 ),
-                child: Icon(
-                  iconData,
-                  size: 32.r,
+                child: Center(
+                  child: SizedBox(
+                    width: 34,
+                    height: 34,
+                    child: SvgPicture.asset(
+                      assetPath,
+                    ),
+                  ),
                 ),
               )
             ],

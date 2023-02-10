@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qclay_test/core/paints/custom_bottom_painter/custom_bottom_widget.dart';
+import 'package:qclay_test/core/theme/icons/app_icons.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/widgets/back_button/back_button.dart';
@@ -84,7 +85,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                               ),
                               BackButtonWidget(
                                 onTap: (){},
-                                iconData: Icons.add,
+                                assetPath: "assets/svg/ic_ios_arrow.svg",
                               ),
                             ],
                           ),

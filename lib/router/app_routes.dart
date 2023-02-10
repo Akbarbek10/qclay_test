@@ -10,7 +10,7 @@ final rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
   navigatorKey: rootNavigatorKey,
-  initialLocation: Routes.product,
+  initialLocation: Routes.cart,
   routes: [
     GoRoute(
       name: Routes.home,

@@ -186,7 +186,7 @@ class _CartPageBodyState extends State<CartPageBody> with CartMixin {
                                 left: 36.w,
                                 right: 36.w,
                                 child:  BottomActionWidget(
-                                  iconData: Icons.shopping_bag,
+                                  assetPath: "assets/svg/ic_arrows_right.svg",
                                   text: "Make Payment",
                                   onTap: (){},
                                 ),

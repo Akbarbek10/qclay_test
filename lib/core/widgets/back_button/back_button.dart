@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
 
 class BackButtonWidget extends StatelessWidget {
   final Function() onTap;
-  final IconData iconData;
+  final String assetPath;
 
   const BackButtonWidget({
     Key? key,
-    required this.onTap,
-    required this.iconData,
+    required this.onTap, required this.assetPath,
   }) : super(key: key);
 
   @override
@@ -31,9 +31,11 @@ class BackButtonWidget extends StatelessWidget {
           ),
           width: 69.w,
           height: 95.h,
-          child:  Center(
-            child: Icon(
-              iconData,
+          child: Center(
+            child: SvgPicture.asset(
+              "$assetPath",
+              width: 24,
+              height: 18,
             ),
           ),
         ),
