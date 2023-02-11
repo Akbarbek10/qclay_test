@@ -41,7 +41,6 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
   @override
   void initState() {
     super.initState();
-    if (!mounted) return;
     _initState(context);
 
     WidgetsBinding.instance.addPersistentFrameCallback((timeStamp) {
@@ -117,7 +116,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SnackTypeItemWidget(
-                                hasIcon: false,
+                                text: "All",
                                 onTap: () {
                                   _bloc.add(
                                     const SnackTypeSelectedEvent(
@@ -170,7 +169,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                     SnackTypes.chips,
                               ),
                               SnackTypeItemWidget(
-                                assetPath: "assets/svg/ic_candy.svg",
+                                assetPath: "assets/svg/ic_bag.svg",
                                 onTap: () {
                                   _bloc.add(
                                     const SnackTypeSelectedEvent(
@@ -197,7 +196,7 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                           top: 32.h, right: 46.w, left: 46.w, bottom: 42.h),
                       sliver: SliverToBoxAdapter(
                         child: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             context.pushNamed(Routes.product);
                           },
                           child: Stack(
@@ -208,8 +207,9 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                           bloc: _bloc,
                                           state: state,
                                           snack: snack,
-                                          isFont: state.currentSnacksList.last ==
-                                              snack,
+                                          isFont:
+                                              state.currentSnacksList.last ==
+                                                  snack,
                                         ),
                                       )
                                       .toList()
@@ -262,15 +262,14 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                                 children: [
                                   Text(
                                     "Cart",
-                                    style: TextStyle(
-                                        color: ThemeColors.white,
-                                        fontSize: 22.sp),
+                                    style: ThemeTextStyles.whiteExtraBold22,
                                   ),
                                   Text(
                                     "1 item",
-                                    style: TextStyle(
-                                        color: ThemeColors.white,
-                                        fontSize: 18.sp),
+                                    style:
+                                        ThemeTextStyles.whiteRegular19.copyWith(
+                                      color: ThemeColors.white.withOpacity(0.4),
+                                    ),
                                   )
                                 ],
                               ),
