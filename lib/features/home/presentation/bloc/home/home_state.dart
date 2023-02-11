@@ -30,7 +30,7 @@ class HomeState extends Equatable {
     return HomeState(
         isCardDragging: isCardDragging ?? this.isCardDragging,
         size: size ?? this.size,
-        currentSnacksList: currentSnacksList!=null ?  [...currentSnacksList]: this.currentSnacksList,
+        currentSnacksList: currentSnacksList ?? this.currentSnacksList,
         cardAngle: cardAngle ?? this.cardAngle,
         cartItems: cartItems ?? this.cartItems,
         cardItemPosition: cardItemPosition ?? this.cardItemPosition,

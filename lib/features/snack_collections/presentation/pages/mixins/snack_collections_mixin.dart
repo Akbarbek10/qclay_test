@@ -50,46 +50,46 @@ mixin SnackCollectionsMixin {
 
   void _loadProductList() {
     _productList = [
-      SnackItemModel(
+      const SnackItemModel(
         type: "Chips",
         imageUrl: "assets/png/chips_collection/snack_1.png",
         price: "7.00",
-        backgroundColor: const Color(0xFFFFE8AE),
+        backgroundColor: Color(0xFFFFE8AE),
         name: "Smiths\nSweets",
       ),
-      SnackItemModel(
+      const SnackItemModel(
         type: "Chips",
         imageUrl: "assets/png/chips_collection/snack_2.png",
         price: "8.00",
-        backgroundColor:const Color(0xFFF2E1D5),
+        backgroundColor:Color(0xFFF2E1D5),
         name: "Dark\nRusset",
       ),
-      SnackItemModel(
+      const SnackItemModel(
         type: "Chips",
         imageUrl: "assets/png/chips_collection/snack_3.png",
         price: "6.00",
-        backgroundColor:const Color(0xFFFFCDCA),
+        backgroundColor:Color(0xFFFFCDCA),
         name: "Twister\nChips",
       ),
-      SnackItemModel(
+      const SnackItemModel(
         type: "Chips",
         imageUrl: "assets/png/chips_collection/snack_4.png",
         price: "7.50",
-        backgroundColor:const Color(0xFFEAFCD7),
+        backgroundColor:Color(0xFFEAFCD7),
         name: "Coconut\nChips",
       ),
-      SnackItemModel(
+      const SnackItemModel(
         type: "Chips",
         imageUrl: "assets/png/chips_collection/snack_5.png",
         price: "9.20",
-        backgroundColor:const Color(0xFFE7E9FF),
+        backgroundColor:Color(0xFFE7E9FF),
         name: "Regular\nNature",
       ),
-      SnackItemModel(
+      const SnackItemModel(
         type: "Chips",
         imageUrl: "assets/png/chips_collection/snack_6.png",
         price: "5.75",
-        backgroundColor:const Color(0xFFDDCDFE),
+        backgroundColor:Color(0xFFDDCDFE),
         name: "Deep\nRiver",
       ),
     ];

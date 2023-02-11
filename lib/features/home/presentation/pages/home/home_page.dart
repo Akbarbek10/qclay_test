@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qclay_test/core/animations/my_horizontal_transition.dart';
+import 'package:qclay_test/core/animations/my_vertical_transition.dart';
 import 'package:qclay_test/core/paints/custom_bottom_painter/custom_bottom_widget.dart';
 import 'package:qclay_test/core/theme/text/theme_text_styles.dart';
 import 'package:qclay_test/core/utils/app_utils.dart';
@@ -37,11 +39,12 @@ class HomePageBody extends StatefulWidget {
   State<HomePageBody> createState() => _HomePageBodyState();
 }
 
-class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
+class _HomePageBodyState extends State<HomePageBody>
+    with HomeMixin, TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _initState(context);
+    _initState(context, this);
 
     WidgetsBinding.instance.addPersistentFrameCallback((timeStamp) {
       final size = MediaQuery.of(context).size;
@@ -85,22 +88,33 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Expanded(
-                                  child: RichText(
-                                text: TextSpan(children: [
-                                  TextSpan(
-                                      text: "Order From The ",
-                                      style: ThemeTextStyles.black30Weight400),
-                                  TextSpan(
-                                      text: "Best Of ",
-                                      style: ThemeTextStyles.black30Weight400),
-                                  TextSpan(
-                                      text: "Snacks",
-                                      style: ThemeTextStyles.black30Weight700),
-                                ]),
+                                  child: MyVerticalTransition(
+                                startingPoint: -size.height,
+                                controller: _transitionController,
+                                child: RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                        text: "Order From The ",
+                                        style:
+                                            ThemeTextStyles.black30Weight400),
+                                    TextSpan(
+                                        text: "Best Of ",
+                                        style:
+                                            ThemeTextStyles.black30Weight400),
+                                    TextSpan(
+                                        text: "Snacks",
+                                        style:
+                                            ThemeTextStyles.black30Weight700),
+                                  ]),
+                                ),
                               )),
-                              BackButtonWidget(
-                                onTap: () {},
-                                assetPath: "assets/svg/ic_menu.svg",
+                              MyHorizontalTransition(
+                                startingPoint: size.width,
+                                controller: _transitionController,
+                                child: BackButtonWidget(
+                                  onTap: () {},
+                                  assetPath: "assets/svg/ic_menu.svg",
+                                ),
                               ),
                             ],
                           ),
@@ -111,7 +125,9 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                       padding:
                           EdgeInsets.only(left: 38.w, right: 19.w, top: 25.h),
                       sliver: SliverToBoxAdapter(
-                        child: SizedBox(
+                        child: MyHorizontalTransition(
+                          startingPoint: -size.width * 2,
+                          controller: _transitionController,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -192,6 +208,41 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                       ),
                     ),
                     SliverPadding(
+                      padding: AppUtils.kPaddingLeft44Top25Right55,
+                      sliver: SliverToBoxAdapter(
+                        child: MyHorizontalTransition(
+                          startingPoint: 0,
+                          controller: _transitionController,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                          text: "Choco ",
+                                          style:
+                                              ThemeTextStyles.black25Weight400),
+                                      TextSpan(
+                                          text: "Collections",
+                                          style:
+                                              ThemeTextStyles.black25Weight700),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const Icon(
+                                Icons.arrow_right_alt_sharp,
+                                size: 32,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SliverPadding(
                       padding: EdgeInsets.only(
                           top: 32.h, right: 46.w, left: 46.w, bottom: 42.h),
                       sliver: SliverToBoxAdapter(
@@ -199,21 +250,25 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
                           onTap: () {
                             context.pushNamed(Routes.product);
                           },
-                          child: Stack(
-                              children: state.currentSnacksList.isNotEmpty
-                                  ? state.currentSnacksList
-                                      .map(
-                                        (snack) => SnackCardItem(
-                                          bloc: _bloc,
-                                          state: state,
-                                          snack: snack,
-                                          isFont:
-                                              state.currentSnacksList.last ==
-                                                  snack,
-                                        ),
-                                      )
-                                      .toList()
-                                  : []),
+                          child: MyHorizontalTransition(
+                            startingPoint: -size.width * 2,
+                            controller: _transitionController,
+                            child: Stack(
+                                children: state.currentSnacksList.isNotEmpty
+                                    ? state.currentSnacksList
+                                        .map(
+                                          (snack) => SnackCardItem(
+                                            bloc: _bloc,
+                                            state: state,
+                                            snack: snack,
+                                            isFont:
+                                                state.currentSnacksList.last ==
+                                                    snack,
+                                          ),
+                                        )
+                                        .toList()
+                                    : []),
+                          ),
                         ),
                       ),
                     )
@@ -222,77 +277,83 @@ class _HomePageBodyState extends State<HomePageBody> with HomeMixin {
               ),
               Positioned(
                 bottom: 0,
-                child: Stack(
-                  alignment: Alignment.topCenter,
-                  children: [
-                    Positioned(
-                      child: CustomPaint(
-                        size: Size(size.width, 124.h),
-                        painter: BottomWidgetCustomPainter(),
-                        child: SizedBox(
-                          width: size.width,
-                          height: 124.h,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 49.w,
-                              ),
-                              Container(
-                                padding: AppUtils.kPaddingAll16,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: ThemeColors.secondaryColor,
+                child: MyVerticalTransition(
+                  startingPoint: size.height,
+                  controller: _transitionController,
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      Positioned(
+                        child: CustomPaint(
+                          size: Size(size.width, 124.h),
+                          painter: BottomWidgetCustomPainter(),
+                          child: SizedBox(
+                            width: size.width,
+                            height: 124.h,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 49.w,
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    "1",
-                                    style: TextStyle(
-                                        color: ThemeColors.black,
-                                        fontSize: 18.sp),
+                                Container(
+                                  padding: AppUtils.kPaddingAll16,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: ThemeColors.secondaryColor,
                                   ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 28.w,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    "Cart",
-                                    style: ThemeTextStyles.whiteExtraBold22,
-                                  ),
-                                  Text(
-                                    "1 item",
-                                    style:
-                                        ThemeTextStyles.whiteRegular19.copyWith(
-                                      color: ThemeColors.white.withOpacity(0.4),
+                                  child: Center(
+                                    child: Text(
+                                      "1",
+                                      style: TextStyle(
+                                          color: ThemeColors.black,
+                                          fontSize: 18.sp),
                                     ),
-                                  )
-                                ],
-                              ),
-                              AppUtils.kSpacer,
-                              ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemCount: state.cartItems.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return HomeCartItemWidget(
-                                    item: state.cartItems[index],
-                                  );
-                                },
-                              ),
-                              AppUtils.kSpacer,
-                            ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 28.w,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      "Cart",
+                                      style: ThemeTextStyles.whiteExtraBold22,
+                                    ),
+                                    Text(
+                                      "1 item",
+                                      style: ThemeTextStyles.whiteRegular19
+                                          .copyWith(
+                                        color:
+                                            ThemeColors.white.withOpacity(0.4),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                AppUtils.kSpacer,
+                                ListView.builder(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: state.cartItems.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return HomeCartItemWidget(
+                                      item: state.cartItems[index],
+                                    );
+                                  },
+                                ),
+                                AppUtils.kSpacer,
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    const BottomSheetLineWidget(),
-                  ],
+                      const BottomSheetLineWidget(),
+                    ],
+                  ),
                 ),
               ),
             ],

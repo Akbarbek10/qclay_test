@@ -76,18 +76,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _nextCard(Emitter<HomeState> emit) async {
     var list = [...state.currentSnacksList];
-
+    if (list.isEmpty) return;
     _addSnackToCart(list.last, emit);
-
     list.removeLast();
-    debugPrint("${list.length}");
-    await Future.delayed(const Duration(milliseconds: 300)).then((value) {
+    await Future.delayed(const Duration(milliseconds: 300)).then((_) {
       emit(state.copyWith(currentSnacksList: list));
-
-      _resetPosition(emit);
     });
-
-    debugPrint("${state.currentSnacksList.length}");
   }
 
   _onEndPosition(EndPositionEvent event, Emitter<HomeState> emit) async {
@@ -97,16 +91,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     );
     if (y <= -20) {
       await _swipeLeftRight(emit);
-
-      return;
     }
     _resetPosition(emit);
   }
 
   _resetPosition(Emitter<HomeState> emit) {
+    debugPrint("reseeeeeet");
     emit(
       state.copyWith(
-          isCardDragging: false, cardItemPosition: Offset.zero, cardAngle: 0),
+        isCardDragging: false,
+        cardItemPosition: Offset.zero,
+        cardAngle: 0,
+      ),
     );
   }
 
@@ -140,11 +136,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (x > 0) {
       position += Offset(2 * sizeWidth!, 0);
     }
+    emit(
+      state.copyWith(
+        cardItemPosition: position,
+        cardAngle: angle,
+      ),
+    );
 
-    emit(state.copyWith(
-      cardItemPosition: position,
-      cardAngle: angle,
-    ));
     await _nextCard(emit);
   }
 }

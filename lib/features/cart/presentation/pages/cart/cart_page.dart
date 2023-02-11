@@ -67,7 +67,7 @@ class _CartPageBodyState extends State<CartPageBody> with CartMixin {
         return Scaffold(
           backgroundColor: ThemeColors.white,
           body: Column(
-            children:  [
+            children: [
               const CartTopWidget(),
               Expanded(
                 child: Stack(
@@ -89,11 +89,13 @@ class _CartPageBodyState extends State<CartPageBody> with CartMixin {
                                 ),
                                 children: [
                                   ListView.builder(
-                                    physics: const NeverScrollableScrollPhysics(),
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     itemCount: 5,
-                                    itemBuilder: (BuildContext context, int index) {
-                                      return CartItemWidget();
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return const CartItemWidget();
                                     },
                                   ),
                                   AppUtils.kBoxHeight30,
@@ -112,7 +114,7 @@ class _CartPageBodyState extends State<CartPageBody> with CartMixin {
                                               padding: EdgeInsets.symmetric(
                                                   horizontal: 30.w),
                                               child: Row(
-                                                children:  [
+                                                children: [
                                                   Text(
                                                     "Delivery Amount",
                                                     style: ThemeTextStyles
@@ -144,8 +146,10 @@ class _CartPageBodyState extends State<CartPageBody> with CartMixin {
                                                     top: 18.h,
                                                     left: 35.w,
                                                     child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children:  [
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
                                                         Text(
                                                           "Total Amount",
                                                           style: ThemeTextStyles
@@ -184,10 +188,10 @@ class _CartPageBodyState extends State<CartPageBody> with CartMixin {
                               bottom: 20.h,
                               left: 36.w,
                               right: 36.w,
-                              child:  BottomActionWidget(
+                              child: BottomActionWidget(
                                 assetPath: "assets/svg/ic_arrows_right.svg",
                                 text: "Make Payment",
-                                onTap: (){},
+                                onTap: () {},
                               ),
                             ),
                           ],
