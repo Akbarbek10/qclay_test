@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qclay_test/core/animations/my_horizontal_transition.dart';
+import 'package:qclay_test/core/animations/my_vertical_transition.dart';
 import 'package:qclay_test/core/paints/cart_info_painter/cart_info_widget.dart';
 import 'package:qclay_test/core/paints/custom_bottom_painter/cart_container_widget.dart';
 import 'package:qclay_test/core/theme/text/theme_text_styles.dart';
@@ -37,10 +39,11 @@ class CartPageBody extends StatefulWidget {
   State<CartPageBody> createState() => _CartPageBodyState();
 }
 
-class _CartPageBodyState extends State<CartPageBody> with CartMixin {
+class _CartPageBodyState extends State<CartPageBody>
+    with CartMixin, TickerProviderStateMixin {
   @override
   void initState() {
-    // _initState(context);
+    _initState(context, this);
     super.initState();
   }
 
@@ -68,7 +71,11 @@ class _CartPageBodyState extends State<CartPageBody> with CartMixin {
           backgroundColor: ThemeColors.white,
           body: Column(
             children: [
-              const CartTopWidget(),
+              MyVerticalTransition(
+                startingPoint: -size.height,
+                controller: _firstController,
+                child: const CartTopWidget(),
+              ),
               Expanded(
                 child: Stack(
                   alignment: Alignment.topCenter,
@@ -88,94 +95,112 @@ class _CartPageBodyState extends State<CartPageBody> with CartMixin {
                                   bottom: 100.h,
                                 ),
                                 children: [
-                                  ListView.builder(
+                                  ListView(
                                     physics:
                                         const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount: 5,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return const CartItemWidget();
-                                    },
+                                    children: [
+                                      MyHorizontalTransition(
+                                          startingPoint: size.width * 2,
+                                          controller: _firstController,
+                                          child: CartItemWidget()),
+                                      MyHorizontalTransition(
+                                          startingPoint: size.width * 2,
+                                          controller: _secondController,
+                                          child: CartItemWidget()),
+                                      MyHorizontalTransition(
+                                          startingPoint: size.width * 2,
+                                          controller: _thirdController,
+                                          child: CartItemWidget()),
+                                      MyHorizontalTransition(
+                                          startingPoint: size.width * 2,
+                                          controller: _forthController,
+                                          child: CartItemWidget()),
+                                    ],
                                   ),
                                   AppUtils.kBoxHeight30,
-                                  CustomPaint(
-                                    size: Size(size.width, 188.h),
-                                    painter: RPSCustomPainter(),
-                                    child: ClipRRect(
-                                      borderRadius: AppUtils.kBorderRadius34,
-                                      child: SizedBox(
-                                        width: size.width,
-                                        height: 188.h,
-                                        child: Column(
-                                          children: [
-                                            SizedBox(height: 33.h),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 30.w),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    "Delivery Amount",
-                                                    style: ThemeTextStyles
-                                                        .blackRegular14,
-                                                  ),
-                                                  AppUtils.kBoxWidth8,
-                                                  Expanded(
-                                                    child: Text(
-                                                      r"$4.00",
+                                  MyHorizontalTransition(
+                                    startingPoint: -size.width * 2,
+                                    controller: _fifthController,
+                                    child: CustomPaint(
+                                      size: Size(size.width, 188.h),
+                                      painter: RPSCustomPainter(),
+                                      child: ClipRRect(
+                                        borderRadius: AppUtils.kBorderRadius34,
+                                        child: SizedBox(
+                                          width: size.width,
+                                          height: 188.h,
+                                          child: Column(
+                                            children: [
+                                              SizedBox(height: 33.h),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 30.w),
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      "Delivery Amount",
                                                       style: ThemeTextStyles
-                                                          .blackExtraBold18,
-                                                      textAlign: TextAlign.end,
+                                                          .blackRegular14,
                                                     ),
-                                                  ),
-                                                ],
+                                                    AppUtils.kBoxWidth8,
+                                                    Expanded(
+                                                      child: Text(
+                                                        r"$4.00",
+                                                        style: ThemeTextStyles
+                                                            .blackExtraBold18,
+                                                        textAlign:
+                                                            TextAlign.end,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(height: 14.h),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 30.w),
-                                              child: AppUtils.kDivider,
-                                            ),
-                                            Expanded(
-                                              child: Stack(
-                                                clipBehavior: Clip.antiAlias,
-                                                children: [
-                                                  Positioned(
-                                                    top: 18.h,
-                                                    left: 35.w,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          "Total Amount",
-                                                          style: ThemeTextStyles
-                                                              .blackRegular20,
-                                                        ),
-                                                        Text(
-                                                          "USD 38.00",
-                                                          style: ThemeTextStyles
-                                                              .blackExtraBold34,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Positioned(
-                                                    bottom: -10,
-                                                    right: -25,
-                                                    child: Image.asset(
-                                                      width: 110.w,
-                                                      height: 110.h,
-                                                      "assets/png/dang.png",
-                                                    ),
-                                                  ),
-                                                ],
+                                              SizedBox(height: 14.h),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 30.w),
+                                                child: AppUtils.kDivider,
                                               ),
-                                            )
-                                          ],
+                                              Expanded(
+                                                child: Stack(
+                                                  clipBehavior: Clip.antiAlias,
+                                                  children: [
+                                                    Positioned(
+                                                      top: 18.h,
+                                                      left: 35.w,
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            "Total Amount",
+                                                            style: ThemeTextStyles
+                                                                .blackRegular20,
+                                                          ),
+                                                          Text(
+                                                            "USD 38.00",
+                                                            style: ThemeTextStyles
+                                                                .blackExtraBold34,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Positioned(
+                                                      bottom: -10,
+                                                      right: -25,
+                                                      child: Image.asset(
+                                                        width: 110.w,
+                                                        height: 110.h,
+                                                        "assets/png/dang.png",
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -188,10 +213,13 @@ class _CartPageBodyState extends State<CartPageBody> with CartMixin {
                               bottom: 20.h,
                               left: 36.w,
                               right: 36.w,
-                              child: BottomActionWidget(
-                                assetPath: "assets/svg/ic_arrows_right.svg",
-                                text: "Make Payment",
-                                onTap: () {},
+                              child: MyVerticalTransition(
+                                controller: _sixthController,
+                                child: BottomActionWidget(
+                                  assetPath: "assets/svg/ic_arrows_right.svg",
+                                  text: "Make Payment",
+                                  onTap: () {},
+                                ),
                               ),
                             ),
                           ],

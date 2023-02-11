@@ -7,6 +7,8 @@ mixin HomeMixin {
   final List<SnackItemModel> _chocoList = [];
   final List<SnackItemModel> _sweetsList = [];
   late AnimationController _transitionController;
+  late AnimationController _allController;
+  late AnimationController _chipsController;
 
   void _initState(BuildContext context, TickerProvider ticker) {
     _bloc = context.read<HomeBloc>();
@@ -19,8 +21,17 @@ mixin HomeMixin {
       vsync: ticker,
       duration: const Duration(milliseconds: 500),
     );
+    _allController = AnimationController(
+      vsync: ticker,
+      duration: const Duration(milliseconds: 500),
+    );
+    _chipsController = AnimationController(
+      vsync: ticker,
+      duration: const Duration(milliseconds: 500),
+    );
     _transitionController.forward();
   }
+
 
   void _initLists() {
     for (int i = 0; i < 5; i++) {
