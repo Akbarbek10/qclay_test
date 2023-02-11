@@ -58,8 +58,6 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-
     return BlocConsumer<ProductBloc, ProductState>(
       listener: (_, state) {},
       builder: (_, state) {

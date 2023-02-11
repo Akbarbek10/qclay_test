@@ -42,18 +42,3 @@ mixin ProductMixin {
   }
 }
 
-class SnackItemModel {
-  final String? type;
-  final String? imageUrl;
-  final String? price;
-  final String? name;
-  final Color? backgroundColor;
-
-  SnackItemModel({
-    this.type,
-    this.imageUrl,
-    this.price,
-    this.name,
-    this.backgroundColor,
-  });
-}

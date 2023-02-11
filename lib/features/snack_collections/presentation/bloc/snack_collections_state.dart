@@ -1,10 +1,24 @@
 part of 'snack_collections_bloc.dart';
 
-abstract class SnackCollectionsState extends Equatable {
-  const SnackCollectionsState();
+
+class SnackCollectionsState extends Equatable {
+  final List<SnackItemModel> favouriteProductList;
+
+  const SnackCollectionsState({
+    this.favouriteProductList = const [],
+  });
+
+  SnackCollectionsState copyWith({
+    List<SnackItemModel>? favouriteProductList,
+  }) {
+    return SnackCollectionsState(
+      favouriteProductList:favouriteProductList!=null ? [...favouriteProductList] : this.favouriteProductList,
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+    favouriteProductList,
+  ];
 }
 
-class SnackCollectionsInitial extends SnackCollectionsState {
-  @override
-  List<Object> get props => [];
-}

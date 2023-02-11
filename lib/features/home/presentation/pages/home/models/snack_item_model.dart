@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class SnackItemModel {
+class SnackItemModel extends Equatable {
   final String? type;
   final String? imageUrl;
   final String? cartImgUrl;
@@ -8,12 +9,22 @@ class SnackItemModel {
   final String? name;
   final Color? backgroundColor;
 
-  SnackItemModel({
-    this.cartImgUrl='',
-    this.type='',
-    this.imageUrl='',
-    this.price='',
-    this.name='',
-    this.backgroundColor,
+  const SnackItemModel({
+    this.cartImgUrl = '',
+    this.type = '',
+    this.imageUrl = '',
+    this.price = '',
+    this.name = '',
+    this.backgroundColor = Colors.transparent,
   });
+
+  @override
+  List<Object?> get props => [
+        cartImgUrl,
+        type,
+        imageUrl,
+        price,
+        name,
+        backgroundColor,
+      ];
 }

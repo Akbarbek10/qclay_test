@@ -48,6 +48,7 @@ dependencies:
   flutter_svg: any
   keyboard_dismisser: ^3.0.0
   cached_network_image: ^3.2.2
+  delayed_display: ^2.0.0
 
 
 dev_dependencies:

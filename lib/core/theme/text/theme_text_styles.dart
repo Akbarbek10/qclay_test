@@ -146,6 +146,12 @@ class ThemeTextStyles {
     fontWeight: FontWeight.w700,
   );
 
+  static final blackRegular42 = TextStyle(
+    color: ThemeColors.black,
+    fontSize: 42.sp,
+    fontWeight: FontWeight.w400,
+  );
+
   static final blackExtraBold16 = TextStyle(
     color: ThemeColors.black,
     fontSize: 16.sp,
