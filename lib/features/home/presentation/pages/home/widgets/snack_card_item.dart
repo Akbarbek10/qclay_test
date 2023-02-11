@@ -54,11 +54,11 @@ class _SnackCardItemState extends State<SnackCardItem> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                       Text(
                         "Good\nSource",
                         style: TextStyle(
                           height: 1,
-                          fontSize: 36,
+                          fontSize: 36.sp,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -73,7 +73,7 @@ class _SnackCardItemState extends State<SnackCardItem> {
                           style: TextStyle(
                             color: Colors.grey.shade600,
                             fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                           ),
                         ),
                       ),
@@ -92,6 +92,11 @@ class _SnackCardItemState extends State<SnackCardItem> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: ThemeColors.white.withOpacity(0.35),
+                            border: Border.all(
+                              width: 0.5,
+                              color: ThemeColors.whiteF8,
+                            ),
+                            borderRadius: AppUtils.kBorderRadius38
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -101,9 +106,9 @@ class _SnackCardItemState extends State<SnackCardItem> {
                             Expanded(
                               child: Text(
                                 "\$${widget.snack?.price}",
-                                style: const TextStyle(
+                                style:  TextStyle(
                                     color: ThemeColors.black,
-                                    fontSize: 19,
+                                    fontSize: 19.sp,
                                     fontWeight: FontWeight.w700),
                               ),
                             ),
@@ -224,7 +229,14 @@ class _SnackCardItemState extends State<SnackCardItem> {
                               filter: ImageFilter.blur(sigmaY: 8, sigmaX: 8),
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: ThemeColors.white.withOpacity(0.35)),
+                                    color: ThemeColors.white.withOpacity(0.35),
+                                  border: Border.all(
+                                    width: 0.5,
+                                    color: ThemeColors.whiteF8,
+                                  ),
+                                  borderRadius: AppUtils.kBorderRadius38,
+                                ),
+
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,

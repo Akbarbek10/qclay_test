@@ -63,209 +63,208 @@ class _ProductPageBodyState extends State<ProductPageBody> with ProductMixin {
       builder: (_, state) {
         return Scaffold(
           backgroundColor: const Color(0xFFFEFEFE),
-          body: SafeArea(
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    ThemeColors.white,
-                    ThemeColors.whiteEB,
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0.0, 1.0],
-                  tileMode: TileMode.clamp,
-                ),
+          body: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  ThemeColors.white,
+                  ThemeColors.whiteEB,
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp,
               ),
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: ListView(
-                      padding: EdgeInsets.only(bottom: 100.h),
-                      children: [
-                        SizedBox(height: 54.h),
-                        Padding(
-                          padding: AppUtils.kPaddingHor38,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  "Coconut \nChips",
-                                  style: ThemeTextStyles.blackExtraBold42
-                                      .copyWith(height: 1.1),
-                                ),
-                              ),
-                              AppUtils.kBoxWidth8,
-                              BackButtonWidget(
-                                onTap: () {
-                                  context.pop();
-                                },
-                                assetPath: "assets/svg/ic_ios_arrow.svg",
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 14.h),
-                        Padding(
-                          padding: AppUtils.kPaddingHor38,
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "dang",
-                              style: ThemeTextStyles.blackRegular20.copyWith(
-                                  color: ThemeColors.black.withOpacity(0.4)),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 24.h),
-                        Stack(
-                          alignment: Alignment.center,
-                          clipBehavior: Clip.none,
+            ),
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: ListView(
+                    padding: EdgeInsets.only(bottom: 100.h),
+                    children: [
+                      SizedBox(height: 54.h),
+                      Padding(
+                        padding: AppUtils.kPaddingHor38,
+                        child: Row(
                           children: [
-                            Image.asset(
-                              width: 251.w,
-                              height: 375.h,
-                              "assets/png/dang.png",
-                            ),
-                            Positioned(
-                              top: 320.h,
-                              child: ClipRRect(
-                                borderRadius: AppUtils.kBorderRadius22,
-                                child: BackdropFilter(
-                                  filter: ImageFilter.blur(
-                                    sigmaY: 8,
-                                    sigmaX: 8,
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color:
-                                          ThemeColors.white.withOpacity(0.35),
-                                      border: Border.all(
-                                        width: 1,
-                                        color: ThemeColors.whiteF8,
-                                      ),
-                                      borderRadius: AppUtils.kBorderRadius22,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 30.h,
-                                        horizontal: 30.w,
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            "Pure\nCoconut",
-                                            style: ThemeTextStyles
-                                                .blackRegular14
-                                                .copyWith(
-                                                    color: ThemeColors.black
-                                                        .withOpacity(0.4)),
-                                          ),
-                                          AppUtils.kBoxWidth14,
-                                          Text(
-                                            "100%",
-                                            style: ThemeTextStyles
-                                                .blackExtraBold26,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                            Expanded(
+                              child: Text(
+                                "Coconut \nChips",
+                                style: ThemeTextStyles.blackExtraBold42
+                                    .copyWith(height: 1.1),
                               ),
+                            ),
+                            AppUtils.kBoxWidth8,
+                            BackButtonWidget(
+                              onTap: () {
+                                if(mounted){
+                                context.pop();}
+                              },
+                              assetPath: "assets/svg/ic_ios_arrow.svg",
                             ),
                           ],
                         ),
-                        SizedBox(height: 24.h),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            GestureDetector(
-                              onTap: (){
-                                _bloc.add(const IncreaseQuantityEvent());
-                              },
-                              child: SizedBox(
-                                width: 88.w,
-                                height: 210.h,
+                      ),
+                      SizedBox(height: 14.h),
+                      Padding(
+                        padding: AppUtils.kPaddingHor38,
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "dang",
+                            style: ThemeTextStyles.blackRegular20.copyWith(
+                                color: ThemeColors.black.withOpacity(0.4)),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 24.h),
+                      Stack(
+                        alignment: Alignment.center,
+                        clipBehavior: Clip.none,
+                        children: [
+                          Image.asset(
+                            width: 251.w,
+                            height: 375.h,
+                            "assets/png/dang.png",
+                          ),
+                          Positioned(
+                            top: 320.h,
+                            child: ClipRRect(
+                              borderRadius: AppUtils.kBorderRadius22,
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(
+                                  sigmaY: 8,
+                                  sigmaX: 8,
+                                ),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color:
+                                        ThemeColors.white.withOpacity(0.35),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: ThemeColors.whiteF8,
+                                    ),
+                                    borderRadius: AppUtils.kBorderRadius22,
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 30.h,
+                                      horizontal: 30.w,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "Pure\nCoconut",
+                                          style: ThemeTextStyles
+                                              .blackRegular14
+                                              .copyWith(
+                                                  color: ThemeColors.black
+                                                      .withOpacity(0.4)),
+                                        ),
+                                        AppUtils.kBoxWidth14,
+                                        Text(
+                                          "100%",
+                                          style: ThemeTextStyles
+                                              .blackExtraBold26,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 24.h),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          GestureDetector(
+                            onTap: (){
+                              _bloc.add(const IncreaseQuantityEvent());
+                            },
+                            child: SizedBox(
+                              width: 88.w,
+                              height: 210.h,
+                              child: CustomPaint(
+                                size: Size(88.w, 210.h),
+                                painter: AddRemoveBtnCustomPainter(),
+                                child: Icon(
+                                  Icons.add,
+                                  size: 34.r,
+                                ),
+                              ),
+                            ),
+                          ),
+                          AppUtils.kSpacer,
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "${state.product.quantity}",
+                                style: ThemeTextStyles.blackExtraBold46,
+                              ),
+                              AppUtils.kBoxHeight4,
+                              Container(
+                                width: 155.w,
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 16.h,
+                                  // horizontal: 33.w,
+                                ),
+                                decoration: const BoxDecoration(
+                                  borderRadius: AppUtils.kBorderRadius44,
+                                  color: ThemeColors.secondaryColor,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    r"$""${state.product.totalSum}",
+                                    style: ThemeTextStyles.blackExtraBold24,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          AppUtils.kSpacer,
+                          GestureDetector(
+                            onTap: (){
+                              _bloc.add(const DecreaseQuantityEvent());
+                            },
+                            child: SizedBox(
+                              width: 88.w,
+                              height: 210.h,
+                              child: Transform.scale(
+                                scaleX: -1,
                                 child: CustomPaint(
                                   size: Size(88.w, 210.h),
                                   painter: AddRemoveBtnCustomPainter(),
                                   child: Icon(
-                                    Icons.add,
+                                    Icons.remove,
                                     size: 34.r,
                                   ),
                                 ),
                               ),
                             ),
-                            AppUtils.kSpacer,
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "${state.product.quantity}",
-                                  style: ThemeTextStyles.blackExtraBold46,
-                                ),
-                                AppUtils.kBoxHeight4,
-                                Container(
-                                  width: 155.w,
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 16.h,
-                                    // horizontal: 33.w,
-                                  ),
-                                  decoration: const BoxDecoration(
-                                    borderRadius: AppUtils.kBorderRadius44,
-                                    color: ThemeColors.secondaryColor,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      r"$""${state.product.totalSum}",
-                                      style: ThemeTextStyles.blackExtraBold24,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            AppUtils.kSpacer,
-                            GestureDetector(
-                              onTap: (){
-                                _bloc.add(const DecreaseQuantityEvent());
-                              },
-                              child: SizedBox(
-                                width: 88.w,
-                                height: 210.h,
-                                child: Transform.scale(
-                                  scaleX: -1,
-                                  child: CustomPaint(
-                                    size: Size(88.w, 210.h),
-                                    painter: AddRemoveBtnCustomPainter(),
-                                    child: Icon(
-                                      Icons.remove,
-                                      size: 34.r,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  Positioned(
-                    bottom: 20.h,
-                    left: 36.w,
-                    right: 36.w,
-                    child: BottomActionWidget(
-                      assetPath: "assets/svg/ic_bag.svg",
-                      text: "Add to Cart",
-                      onTap: (){
-                        context.pushNamed(Routes.cart);
-                      },
-                    ),
-                  )
-                ],
-              ),
+                ),
+                Positioned(
+                  bottom: 20.h,
+                  left: 36.w,
+                  right: 36.w,
+                  child: BottomActionWidget(
+                    assetPath: "assets/svg/ic_bag.svg",
+                    text: "Add to Cart",
+                    onTap: (){
+                      context.pushNamed(Routes.cart);
+                    },
+                  ),
+                )
+              ],
             ),
           ),
         );
