@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qclay_test/core/animations/my_horizontal_transition.dart';
 import 'package:qclay_test/core/animations/my_vertical_transition.dart';
+import 'package:qclay_test/core/paints/custom_bottom_painter/custom_bottom_widget.dart';
+import 'package:qclay_test/core/theme/colors/theme_colors.dart';
 import 'package:qclay_test/core/theme/text/theme_text_styles.dart';
+import 'package:qclay_test/core/utils/app_utils.dart';
 import 'package:qclay_test/core/widgets/back_button/back_button.dart';
+import 'package:qclay_test/core/widgets/lines/bottom_sheet_line_widget.dart';
 import 'package:qclay_test/features/home/presentation/pages/home/models/snack_item_model.dart';
+import 'package:qclay_test/features/home/presentation/pages/home/widgets/home_cart_item_widget.dart';
 import 'package:qclay_test/features/snack_collections/presentation/bloc/snack_collections_bloc.dart';
 import 'package:qclay_test/features/snack_collections/presentation/pages/widgets/snack_card_collection_item.dart';
 import 'package:qclay_test/injector_container.dart';
+import 'package:qclay_test/router/name_routes.dart';
 
 import 'widgets/custom_filter_widget.dart';
 
@@ -173,96 +180,96 @@ class _SnackCollectionsPageBodyState extends State<SnackCollectionsPageBody>
                     ),
                   ),
                 ),
-                // Positioned(
-                //   bottom: 0,
-                //   child: GestureDetector(
-                //     onTap: () {
-                //       context.pushNamed(Routes.home);
-                //     },
-                //     child: Stack(
-                //       alignment: Alignment.topCenter,
-                //       children: [
-                //         Positioned(
-                //           child: CustomPaint(
-                //             size: Size(size.width, 124.h),
-                //             painter: BottomWidgetCustomPainter(),
-                //             child: SizedBox(
-                //               width: size.width,
-                //               height: 124.h,
-                //               child: Row(
-                //                 crossAxisAlignment: CrossAxisAlignment.center,
-                //                 children: [
-                //                   SizedBox(
-                //                     width: 49.w,
-                //                   ),
-                //                   Container(
-                //                     width: 44.w,
-                //                     height: 44.w,
-                //                     decoration: const BoxDecoration(
-                //                       shape: BoxShape.circle,
-                //                       color: ThemeColors.secondaryColor,
-                //                     ),
-                //                     child: Center(
-                //                       child: Text(
-                //                         "3",
-                //                         style: ThemeTextStyles.blackExtraBold18,
-                //                       ),
-                //                     ),
-                //                   ),
-                //                   SizedBox(
-                //                     width: 28.w,
-                //                   ),
-                //                   Column(
-                //                     crossAxisAlignment:
-                //                         CrossAxisAlignment.start,
-                //                     mainAxisSize: MainAxisSize.min,
-                //                     children: [
-                //                       Text(
-                //                         "Cart",
-                //                         style: ThemeTextStyles.whiteExtraBold22,
-                //                       ),
-                //                       Text(
-                //                         "1 item",
-                //                         style: ThemeTextStyles.whiteRegular19
-                //                             .copyWith(
-                //                           color: ThemeColors.white
-                //                               .withOpacity(0.4),
-                //                         ),
-                //                       )
-                //                     ],
-                //                   ),
-                //                   AppUtils.kSpacer,
-                //                   ListView.builder(
-                //                     physics:
-                //                         const NeverScrollableScrollPhysics(),
-                //                     shrinkWrap: true,
-                //                     scrollDirection: Axis.horizontal,
-                //                     itemCount:
-                //                         state.favouriteProductList.length,
-                //                     itemBuilder: (_, int index) {
-                //                       return const HomeCartItemWidget(
-                //                         item: SnackItemModel(
-                //                           type: "Sweet",
-                //                           imageUrl: "assets/png/chips.png",
-                //                           price: "0.7",
-                //                           cartImgUrl:
-                //                               "assets/png/ice_cream_cart.png",
-                //                           name: "Smiths\nSweets",
-                //                         ),
-                //                       );
-                //                     },
-                //                   ),
-                //                   AppUtils.kSpacer,
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //         const BottomSheetLineWidget(),
-                //       ],
-                //     ),
-                //   ),
-                // ),
+                Positioned(
+                  bottom: 0,
+                  child: GestureDetector(
+                    onTap: () {
+                      context.pushNamed(Routes.home);
+                    },
+                    child: Stack(
+                      alignment: Alignment.topCenter,
+                      children: [
+                        Positioned(
+                          child: CustomPaint(
+                            size: Size(size.width, 124.h),
+                            painter: BottomWidgetCustomPainter(),
+                            child: SizedBox(
+                              width: size.width,
+                              height: 124.h,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 49.w,
+                                  ),
+                                  Container(
+                                    width: 44.w,
+                                    height: 44.w,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: ThemeColors.secondaryColor,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "3",
+                                        style: ThemeTextStyles.blackExtraBold18,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 28.w,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "Cart",
+                                        style: ThemeTextStyles.whiteExtraBold22,
+                                      ),
+                                      Text(
+                                        "1 item",
+                                        style: ThemeTextStyles.whiteRegular19
+                                            .copyWith(
+                                          color: ThemeColors.white
+                                              .withOpacity(0.4),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  AppUtils.kSpacer,
+                                  ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount:
+                                        state.favouriteProductList.length,
+                                    itemBuilder: (_, int index) {
+                                      return const HomeCartItemWidget(
+                                        item: SnackItemModel(
+                                          type: "Sweet",
+                                          imageUrl: "assets/png/chips.png",
+                                          price: "0.7",
+                                          cartImgUrl:
+                                              "assets/png/ice_cream_cart.png",
+                                          name: "Smiths\nSweets",
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  AppUtils.kSpacer,
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        const BottomSheetLineWidget(),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
