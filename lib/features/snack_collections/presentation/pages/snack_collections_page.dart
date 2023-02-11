@@ -104,8 +104,6 @@ class _SnackCollectionsPageBodyState extends State<SnackCollectionsPageBody>
                                   startingPoint: size.height,
                                   controller: _leftListController,
                                   child: ListView.separated(
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
                                     padding: EdgeInsets.only(
                                       right: 9.w,
                                       bottom: 140.h,
