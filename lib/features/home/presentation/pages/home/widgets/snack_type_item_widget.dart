@@ -9,7 +9,6 @@ class SnackTypeItemWidget extends StatelessWidget {
   final String? text;
   final String? assetPath;
   final Function()? onTap;
-  final bool? hasIcon;
 
   const SnackTypeItemWidget({
     Key? key,
@@ -17,7 +16,6 @@ class SnackTypeItemWidget extends StatelessWidget {
     this.text,
     this.assetPath,
     this.onTap,
-    this.hasIcon = true,
   }) : super(key: key);
 
   @override
@@ -32,11 +30,11 @@ class SnackTypeItemWidget extends StatelessWidget {
         height: 69.h,
         child: Center(
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width: 24.w,),
-              if (hasIcon!)
+              SizedBox(
+                width: 24.w,
+              ),
+              if (assetPath != null) ...[
                 SizedBox(
                   width: 18.w,
                   height: 18.h,
@@ -47,18 +45,32 @@ class SnackTypeItemWidget extends StatelessWidget {
                         : ThemeColors.black,
                   ),
                 ),
-              if (isSelected! || !hasIcon!) ...[
-                if (hasIcon!)  SizedBox(width: 8.w,),
+                if (isSelected!)
+                SizedBox(
+                  width: 8.w,
+                ),
+              ],
+              if (isSelected!)
                 Text(
-                  text ?? "All",
-                  style:  TextStyle(
+                  text ?? "",
+                  style: TextStyle(
                     fontSize: 13.sp,
-                    color: Colors.white,
+                    color:isSelected!? Colors.white:Colors.black,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-              ],
-              SizedBox(width: 24.w,)
+              if(assetPath==null && !isSelected!)
+              Text(
+                text ?? "",
+                style: TextStyle(
+                  fontSize: 13.sp,
+                  color:Colors.black,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(
+                width: 24.w,
+              )
             ],
           ),
         ),
